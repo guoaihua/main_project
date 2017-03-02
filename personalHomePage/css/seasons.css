@@ -1,0 +1,62 @@
+.content {
+    height: 940px;
+    width: 100%;
+    background-color: #FFCC99;
+}
+.icon {
+    height: 140px;
+    padding-left: 245px;
+}
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    border-radius: 50px;
+    float: left;
+    margin: 20px 0 20px 30px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 36px;
+    font-family: "楷体";
+    cursor: pointer;
+}
+
+.introduction {
+    height: 700px;
+    width: 100%;
+    background: url("../imgs/spring.jpg")no-repeat;
+    overflow: hidden;
+
+}
+
+
+.bannertop  {
+    background-color: #cccccc;
+}
+
+
+
+.footer {
+    background-color:rgba(100, 125, 51, 0.98);
+}
+
+
+#spring {
+    background-color: #79AF25;
+}
+#summer{
+    background-color: #EF5BB1;
+}
+#autumu {
+    background-color: #FC9931;
+}
+
+#winter {
+    background-color: #86A6FD;
+}
+
+
+.bj {
+    width: 1349px;
+    margin: 0 auto;
+}

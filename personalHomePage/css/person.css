@@ -1,0 +1,63 @@
+.slide {
+    height: 500px;
+    position: relative;
+
+}
+.content {
+    background: url("../imgs/bg11.jpg") no-repeat;
+}
+.content .bj {
+    width: 1200px;
+
+
+}
+
+.content {
+    margin-bottom: 100px;
+    margin-top: 10px;
+}
+
+.slide li {
+    position: absolute;
+    left: 200px;
+    top: 0;
+}
+.slide li img {
+    width: 100%;
+}
+
+
+
+.arrow {
+    opacity: 0;
+    position: relative;
+    z-index: 100;
+}
+
+
+.prev ,.next {
+    width: 76px;
+    height: 112px;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    background: url("../imgs/prev.png");
+    z-index: 99;
+}
+
+.next {
+    right: 0;
+    background: url("../imgs/next.png");
+}
+
+
+
+.bannertop  {
+    background-color: rgba(204, 204, 153, 0.61);
+}
+
+
+
+.footer {
+    background-color: rgba(100, 125, 51, 0.79);
+}

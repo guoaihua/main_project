@@ -1,0 +1,142 @@
+.content {
+    height: 800px;
+    background-color: #151515;
+}
+
+.contentleft {
+    float: left;
+    width: 30%;
+    height: 700px;
+
+}
+
+.contentright {
+    margin-left: 1%;
+    float: left;
+    width: 69%;
+    height: 700px;
+
+}
+
+.left1 {
+    width: 100%;
+    height: 356px;
+    background-color: #1F1F1F;
+    border: 1px solid #000000;
+    margin-bottom: 10px;
+}
+
+.left1top,.left2top {
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    background-color: #FF6600;
+    padding-left: 10%;
+    border-radius: 5px;
+}
+
+.left1top a,.left2top a{
+    color: white;
+}
+
+.left1bottom ul li,.left2bottom ul li{
+    clear: both;
+    color: #000000;
+}
+
+.left1bottom ,.left2bottom{
+    margin-left: 8%;
+    margin-top: 10px;
+}
+
+.left1bottom ul,.left2bottom ul {
+    list-style: disc;
+    line-height: 30px;
+    font-size: 16px;
+    font-family: "STSong",STXingkai,FangSong;
+}
+
+
+.left2 {
+    width: 100%;
+    height: 330px;
+    background-color: #1F1F1F;
+    border: 1px solid #000000;
+
+}
+
+
+/*右边开始*/
+
+
+.right1 {
+    width: 100%;
+    height: 60%;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-main-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.right1-main img {
+    width: 698px;
+    height: 420px;
+
+}
+
+.right1-main {
+    width: 1397px;
+    height: 420px;
+}
+
+.slider {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 220px;
+
+}
+
+.slider span {
+    display: inline-block;
+    width: 24px;
+    height: 20px;
+    background:url("../imgs/icon.png") no-repeat -24px -782px;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-left: 10px;
+    font-size: 0px;
+}
+
+
+
+.right2 {
+    width: 100%;
+    height: 40%;
+
+}
+
+.right2top {
+    width: 95%;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    padding-left: 5%;
+    background-color:  #FF6600;
+    border-radius: 5px;
+
+}
+
+.right2bottom  {
+    height: 222px;
+    background-color: #1F1F1F;
+    line-height: 30px;
+    padding-top: 10px;
+    color: #ffffff;
+}
+

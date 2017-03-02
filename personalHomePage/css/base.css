@@ -1,0 +1,120 @@
+*{margin: 0;padding: 0;}
+ul{list-style: none;}
+li {
+    float: left;
+}
+body {
+    font-size: 14px;
+    font-family: "宋体";
+}
+img {
+    vertical-align: top;
+}
+
+a {
+    text-decoration: none;
+}
+.w {
+    width: 75%;
+    margin: 0 auto;
+}
+.bannertop {
+    width: 100%;
+    height: 100px;
+    background-color: #000000;
+}
+.topleft {
+    float: left;
+    color: #FF6600;
+    font-size: 40px;
+    width: 30%;
+    line-height: 100px;
+    text-align: center;
+}
+.logo {
+    width: 150px;
+    height: 100px;
+    background: url("../imgs/logo.png") no-repeat;
+    margin-left: 200px;
+}
+
+
+
+.topright {
+    float: left;
+    font-size: 15px;
+    height: 50px;
+    margin-top: 25px;
+    padding-left: 50px;
+}
+
+.topright li {
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+li a {
+    color: grey;
+    display: block;
+    text-decoration: none;
+    font-family: "楷体";
+    font-size: 20px;
+}
+
+li a:hover {
+    color: red;
+
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+
+}
+
+/*尾部开始*/
+.footer {
+    height: 100px;
+    background-color: #000000;
+}
+
+
+.s,.z {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    color: #cccccc;
+    line-height: 50px;
+}
+
+.s ul,.z ul {
+    display: block;
+    width: 150px;
+    height: 30px;
+    margin-left: 40%;
+}
+
+
+
+span {
+   margin-top: 18px;
+    display: block;
+    width: 1px;
+    height: 14px;
+    background-color: white;
+}
+
+ .footer .z ul {
+    margin-left: 42%;
+}
+
+.z li{margin-left: 40px;
+}
+
+.bj {
+
+    width: 1349px;
+    margin: 0 auto;
+}
