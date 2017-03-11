@@ -1,0 +1,46 @@
+*{margin: 0;padding: 0;}
+
+body {
+    background: #efeeec;
+}
+.main {
+    position: relative;
+    height: auto;
+}
+
+.box {
+    padding: 15px 0 0 15px;
+    float: left;
+    -webkit-transition:all 1s ease-in-out;
+
+}
+
+.pic {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.pic img {
+    width: 303px;
+    height: auto;
+}
+
+
+    /*返回按钮*/
+ a {
+     width: 40px;
+     height: 40px;
+     background: gray;
+     position: fixed;
+     right: 5%;
+     bottom: 20px;
+     text-align: center;
+     line-height: 40px;
+     font-size: 14px;
+     text-decoration: none;
+     border-radius: 2px;
+     color: white;
+    display: none;
+ }
