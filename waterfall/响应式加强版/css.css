@@ -3,16 +3,77 @@
 body {
     background: #efeeec;
 }
+.banner {
+    width: 100%;
+    height: 430px;
+
+/*    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 999;*/
+}
+
+.banner>img {
+    width: 100%;
+    height: 430px;
+}
+
+
+     /*   banner设计*/
+
+.banner>.nav {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+ background-color: rgba(227, 229, 228, 0);
+    -webkit-transition: background-color 3s ease-in-out;
+    transition: background-color 3s ease-in-out;
+}
+.logo {
+    width: 10%;
+    height: 80px;
+    float: left;
+    margin-left: 20%;
+    font-size: 40px;
+    font-family: 宋体;
+    line-height: 80px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.logo~ul{
+    list-style: none;
+    width: auto;
+    height: 80px;
+}
+
+.logo~ul>li {
+    float: left;
+    width: 5%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 宋体;
+
+
+}
+
 .main {
     position: relative;
     height: auto;
+
 }
 
 .box {
     padding: 15px 0 0 15px;
     float: left;
     -webkit-transition:all 1s ease-in-out;
-
+    transition:all 1s ease-in-out;
 }
 
 .pic {
@@ -32,6 +93,7 @@ body {
  a {
      width: 40px;
      height: 40px;
+     border-radius: 20px;
      background: gray;
      position: fixed;
      right: 5%;
@@ -42,5 +104,16 @@ body {
      text-decoration: none;
      border-radius: 2px;
      color: white;
-    display: none;
+     display: none;
  }
+
+.show {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    background: deepskyblue;
+/*    height: 200px;
+    width: 303px;*/
+    z-index: 999;
+}
