@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        body {
+            background-color: #fff;
+            color: #555;
+            font-family: 宋体;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;  /*增加文字光滑度*/
+        }
+        .wrap {
+            height: 600px;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            margin-top: -300px;
+            background-color: #333;
+            overflow: hidden;
+            -webkit-perspective: 800px; /*让其子元素获得3d效果 */
+            perspective: 800px;
+        }
+        .photo {
+
+
+            position: absolute;
+            z-index: 1;
+            box-shadow: 0 0 1px rgba(0,0,0,0.1);
+        }
+        .photo img{
+            width: 100%;
+            height: 100%;
+        }
+        .photo .side-front {
+            padding: 20px;
+            width: 260px;
+            height: 320px;
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+            background-color: #9d9d9d;
+
+        }
+        .photo .side-front .caption {
+            text-align: center;
+            font-size: 20px;
+            color: white;
+        }
+
+
+        .photo .side-back {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            background-color: #9d9d9d;
+            padding: 20px;
+            width: 260px;
+            height: 320px;
+        }
+
+        .photo .side-back{
+            font-size: 20px;
+            color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .side-back .desc {
+            width: 200px;
+            height: 100px;
+            color: red;
+        }
+
+
+
+       /* 当前选中的样式*/
+        .photo_center{
+            top: 50%;
+            left: 50%;
+            margin-top: -180px;
+            margin-left: -150px;
+            z-index: 999;
+        }
+
+    /*负责3d翻转效果*/
+        .photo-wrap {
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            transition: all 2s ease-in-out;
+        }
+
+        .photo-wrap .side {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .photo_font .photo-wrap{
+            transform: rotateY(0deg);
+        }
+        .photo_back  .photo-wrap{
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body >
+        <!-- 改写-->
+        <div class="wrap" id="wrap">
+            <!-- photo负责平移和旋转 -->
+            <div class="photo photo_center photo_front" onclick="turn(this)" id="{{index}}">
+
+                <!-- photo-wrap负责翻转 -->
+                <div class="photo-wrap">
+                        <div class="side side-front">
+                            <p class="img"><img src="{{img}}"></p>
+                            <p class="caption">{{caption}}</p>
+                        </div>
+                        <div class="side side-back">
+                            <div class="desc">
+                                {{desc}}
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function turn(elem){
+                var cls=elem.className;
+                if(/photo_front/.test(cls)){
+                    cls=cls.replace(/photo_front/,"photo_back");
+                }else {
+                    cls=cls.replace(/photo_back/,"photo_front");
+                }
+                return elem.className=cls;
+            }
+            // 通用判断函数
+            function g(selector){
+                var methor=selector.substr(0,1)=='.'?'getElementsByClassName':'getElementById';
+                return document[methor](selector.substr(1));
+            }
+            //
+        </script>
+</body>
+</html>

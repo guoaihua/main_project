@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定一</title>
+</head>
+<body>
+    <script type="text/javascript">
+     //  理解的大神操作
+        let p = Observer.prototype;           // 声明构造函数的原型对象p
+        let data = {                          // 创建对象data，其中包含user，adress属性 ，属性之中又分别包含一个含有2个属性的对象
+            user: {
+                name: "guoaihua",
+                age: "21"
+            },
+            address: {
+                city: "yichang"
+            }
+        };
+                                    // 观察者构造函数
+        function Observer(data) {
+            this.data = data;
+            this.walk(data)         // 此时的对象实例调用了原型对象方法walk并传入一个对象，实例继承了原型的属性和方法
+        }
+        // 此函数用于深层次遍历对象的各个属性
+        // 采用的是递归的思路
+        // 因为我们要为对象的每一个属性绑定getter和setter
+        p.walk = function (obj) {             // 给原型对象添加一个walk方法 但是此函数是赋值声明，也就是说未经过预处理
+            let val;
+            for (let key in obj) {
+                // 这里为什么要用hasOwnProperty进行过滤呢？
+                // 因为for...in 循环会把对象原型链上的所有可枚举属性都循环出来
+                // 而我们想要的仅仅是这个对象本身拥有的属性，所以要这么做。
+
+                if (obj.hasOwnProperty(key)) {
+                    val = obj[key];
+                    // 这里进行判断，如果还没有遍历到最底层，继续new Observer
+                    if (typeof val === 'object') {
+                        new Observer(val);
+                    }
+
+                    this.convert(key, val);       //对象实例调用继承来的convert方法 并传入
+                }
+            }
+        };
+        p.convert = function (key, val) {         // 给原型对象添加一个convert方法
+            Object.defineProperty(this.data, key, {     //  此方法接受三个参数，属性所在的对象，属性得名字，和一个描述符对象（这个对象中属性是configurable、ernumerable，和一对getter和setter方法 访问器属性，）
+                enumerable: true,
+                configurable: true,
+                get: function () {                  // 默认读取对象属性时调用，其他时候为undefined，get和set方法接收data传进来的属性和值
+                    console.log('你访问了' + key);
+                    return val
+                },
+                set: function (newVal) {
+                    console.log('你设置了' + key);
+                    console.log('新的' + key + ' = ' + newVal);
+                    if (newVal === val) return;
+                    val = newVal
+                }
+            })
+        };
+        let app = new Observer(data);       // 创建观察者函数的实例对象 并传入定义的data对象
+    </script>
+</body>
+</html>
