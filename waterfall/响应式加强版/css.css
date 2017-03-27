@@ -60,7 +60,6 @@ body {
     font-size: 25px;
     font-family: 宋体;
 
-
 }
 
 .main {
@@ -83,6 +82,9 @@ body {
     box-shadow: 0 0 5px #ccc;
 }
 
+.pic:hover {
+    box-shadow: 13px 17px 13px #ccc;
+}
 .pic img {
     width: 303px;
     height: auto;

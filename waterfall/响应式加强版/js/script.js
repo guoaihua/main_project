@@ -5,7 +5,8 @@ window.onload=function(){
     var clientHeight=document.documentElement.clientHeight;  // 获取页面可视区高度
     var timer=null;
     var isTop=true;
-
+    var showon=document.getElementById("show");
+    var flag=true;
     var main=document.getElementById("main");
     var btn=document.getElementById("backTop");
     var nav=document.getElementById("nav");
@@ -16,7 +17,7 @@ window.onload=function(){
             var scroll=document.documentElement.scrollTop||document.body.scrollTop;
             var speed=Math.floor(-scroll/6);
             document.body.scrollTop=scroll+speed;
-            console.log(scroll+speed);
+       /*     console.log(scroll+speed);*/
             isTop=true;
             if(scroll==0){
                 clearInterval(timer);
@@ -76,8 +77,7 @@ window.onload=function(){
     }
 
     // 鼠标点击展示全图
-    var showon=document.getElementById("show");
-    var flag=true;
+
     function show(){
     var boxs=document.getElementsByClassName("box");
     for (var i=0;i<boxs.length;i++){       // 循环闭包，里面含有匿名函数
