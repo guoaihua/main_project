@@ -5,23 +5,32 @@
     <title>测试一些小功能</title>
     <script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
     <style>
-        div {
-            width: 200px;
-            height: 200px;
-            font-size: 14px;
-            text-align: center;
-            border:1px solid red;
-        }
+
     </style>
 </head>
 <body>
-<div></div>
-    <script >
-    $(document).ready(function(){
-       $("div").html("你好，这是一个测试") ;
-    });
+<div class="wrapper">
+    <ul class="tab">
+        <li class="tab-item active">国际大牌<span>◆</span></li>
+        <li class="tab-item">国妆名牌<span>◆</span></li>
+        <li class="tab-item">清洁用品<span>◆</span></li>
+        <li class="tab-item">男士精品</li>
+    </ul>
+    <div class="products">
+        <div class="main selected">
+            <a href="###"><img src="imgs/guojidapai.jpg" alt=""/></a>
+        </div>
+        <div class="main">
+            <a href="###"><img src="imgs/guozhuangmingpin.jpg" alt=""/></a>
+        </div>
+        <div class="main">
+            <a href="###"><img src="imgs/qingjieyongpin.jpg" alt=""/></a>
+        </div>
+        <div class="main">
+            <a href="###"><img src="imgs/nanshijingpin.jpg" alt=""/></a>
+        </div>
+    </div>
+</div>
 
-
-    </script>
 </body>
 </html>
