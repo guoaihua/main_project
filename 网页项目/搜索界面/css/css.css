@@ -1,0 +1,22 @@
+*{
+    margin:0;
+}
+
+.header {
+    min-width: 1300px;
+    height: 60px;
+   background-color: #00AA88;
+}
+.nav1 {
+    width: 90%;
+    height: 60px;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.wrap {
+    width: 80%;
+    margin: 0 auto;
+}
+.wrap ul {
+
+}
