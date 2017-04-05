@@ -1,11 +1,15 @@
 *{
     margin:0;
+    padding:0;
 }
 
 .header {
     min-width: 1300px;
     height: 60px;
-   background-color: #00AA88;
+   background-color: #ccffcc;
+}
+body {
+    background-color: #99cccc;
 }
 .nav1 {
     width: 90%;
@@ -15,10 +19,7 @@
 }
 .wrap {
     width: 80%;
-    margin: 0 auto;
-}
-.wrap ul {
-
+    margin: 50px auto;
 }
 
 .tab-content {
@@ -33,3 +34,20 @@
 .ws th:nth-child(3) {width: 16.25%}
 .ws th:nth-child(4) {width: 16.25%}
 .ws th:nth-child(5) {width: 16.25%}
+
+.banner p {
+    float: left;
+    line-height: 50px;
+}
+.clear {
+    clear: both;
+}
+
+#nav-tabs {
+    width: 600px;
+    float: right;
+    border-bottom: none;
+    font-size: 20px;
+    font-family: "STSong", STXingkai, FangSong;
+    color: #9d9d9d;
+}
