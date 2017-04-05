@@ -8,6 +8,18 @@
     <script src="../jquery.min.js" type="text/javascript"></script>
     <script src="../bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../Font-Awesome/css/font-awesome.min.css">
+    <script type="text/javascript">
+        window.onload=function(){
+        var dd=document.getElementById("dd");
+        dd.addEventListener("click",function(ev){
+            this.parentNode.parentNode.parentNode.parentNode.style.display="none";
+/*           var ev=event||window.event;
+            var target=ev.target;
+            console.log(target);
+            console.log(this);*/
+        });
+        }
+    </script>
 </head>
 <body>
 <div class="header" >
@@ -55,7 +67,7 @@
                 <li><a href="#ios" data-toggle="tab">待评价</a></li>
                 <li class="dropdown">
                     <a href="#" id="myTabDrop1" class="dropdown-toggle"
-                             data-toggle="dropdown">Java
+                             data-toggle="dropdown">更多货物加载
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
@@ -66,18 +78,96 @@
             </ul>
             <div id="myTabContent" class="tab-content">
                <div class="tab-pane fade in active" id="home">
-
+                      <table class="table table-bordered">
+                      <thead>
+                         <tr class="ws">
+                            <th>宝贝详细信息</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                             <th>状态</th>
+                             <th>操作</th>
+                         </tr>
+                </thead>
+                  </table>
+                     <div class="panel panel-default">
+                   <div class="panel-heading">&nbsp;&nbsp;2017-4-2 订单号:333181212</div>
+                   <table class="table table-bordered ws">
+                      <th>联通话费充值卡</th>
+                       <th>30元 </th>
+                       <th>1</th>
+                       <th>交易成功 </th>
+                       <th id="dd" style="cursor: pointer">删除订单</th>
+                   </table>
+                </div>
                </div>
                <div class="tab-pane fade" id="ios">
-                  <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
-                  TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
+                   <table class="table table-bordered">
+                       <thead>
+                       <tr class="ws">
+                           <th>宝贝详细信息</th>
+                           <th>单价</th>
+                           <th>数量</th>
+                           <th>状态</th>
+                           <th>操作</th>
+                       </tr>
+                       </thead>
+                   </table>
+                   <div class="panel panel-default">
+                       <div class="panel-heading">&nbsp;&nbsp;2017-4-2 订单号:333181212</div>
+                       <table class="table table-bordered ws">
+                           <th>联通话费充值卡</th>
+                           <th>30元 </th>
+                           <th>1</th>
+                           <th>交易成功 </th>
+                           <th id="dd" style="cursor: pointer">删除订单</th>
+                       </table>
+                   </div>
                </div>
                <div class="tab-pane fade" id="jmeter">
-                  <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
+                   <table class="table table-bordered">
+                       <thead>
+                       <tr class="ws">
+                           <th>宝贝详细信息</th>
+                           <th>单价</th>
+                           <th>数量</th>
+                           <th>状态</th>
+                           <th>操作</th>
+                       </tr>
+                       </thead>
+                   </table>
+                   <div class="panel panel-default">
+                       <div class="panel-heading">&nbsp;&nbsp;2017-4-2 订单号:333181212</div>
+                       <table class="table table-bordered ws">
+                           <th>联通话费充值卡</th>
+                           <th>30元 </th>
+                           <th>1</th>
+                           <th>交易成功 </th>
+                           <th id="dd" style="cursor: pointer">删除订单</th>
+                       </table>
+                   </div>
                </div>
                <div class="tab-pane fade" id="ejb">
-                  <p>Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
-                  </p>
+                   <table class="table table-bordered">
+                       <thead>
+                       <tr class="ws">
+                           <th>宝贝详细信息</th>
+                           <th>单价</th>
+                           <th>数量</th>
+                           <th>状态</th>
+                           <th>操作</th>
+                       </tr>
+                       </thead>
+                   </table>
+                   <div class="panel panel-default">
+                       <div class="panel-heading">&nbsp;&nbsp;2017-4-2 订单号:333181212</div>
+                       <table class="table table-bordered ws">
+                           <th>联通话费充值卡</th>
+                           <th>30元 </th>
+                           <th>1</th>
+                           <th>交易成功 </th>
+                           <th id="dd" style="cursor: pointer">删除订单</th>
+                       </table>
+                   </div>
                </div>
             </div>
 

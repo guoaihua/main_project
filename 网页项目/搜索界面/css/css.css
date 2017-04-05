@@ -20,3 +20,16 @@
 .wrap ul {
 
 }
+
+.tab-content {
+    margin-top:20px;
+}
+.tab-content th {
+    text-align: center;
+}
+
+.ws th:nth-child(1) {width: 35%}
+.ws th:nth-child(2) {width: 16.25%}
+.ws th:nth-child(3) {width: 16.25%}
+.ws th:nth-child(4) {width: 16.25%}
+.ws th:nth-child(5) {width: 16.25%}
