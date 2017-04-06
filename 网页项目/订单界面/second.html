@@ -18,6 +18,24 @@
             console.log(target);
             console.log(this);*/
         });
+
+            function fun(name,year){
+                this.name=name;
+                this.year=year;
+      /*          return function (){
+                    age: 22;
+                }*/
+            }
+             fun.say="haha";
+            fun.prototype.say="haha";
+            fun.prototype.name="haha";
+            var a=new fun("q","b");
+            console.log(a.name)
+            console.log(a.year);
+            console.log(a.say);
+
+
+
         }
     </script>
 </head>
@@ -247,6 +265,9 @@
                 </div>
             </div>
         </div>
-
+        <div class="footer">
+            <hr>
+            武汉纺织大学电子电器工程学院
+        </div>
 </body>
 </html>

@@ -6,11 +6,9 @@
 .header {
     min-width: 1300px;
     height: 60px;
-   background-color: #ccffcc;
+   background-color: #99cccc;
 }
-body {
-    background-color: #99cccc;
-}
+
 .nav1 {
     width: 90%;
     height: 60px;
@@ -50,4 +48,14 @@ body {
     font-size: 20px;
     font-family: "STSong", STXingkai, FangSong;
     color: #9d9d9d;
+}
+.footer {
+    position: fixed;
+    bottom: 20px;
+    width: 80%;
+    left: 50%;
+    margin-left: -40%;
+    text-align: center;
+    color: #000000;
+    font-size: 20px;
 }
