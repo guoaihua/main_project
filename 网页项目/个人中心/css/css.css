@@ -9,6 +9,11 @@
     background-color: #99cccc;
 }
 
+body {
+/*    background: url("../imgs/b1.png");*/
+    font-size: 20px;
+    font-family: "STSong", STXingkai, FangSong;
+}
 .tabs-left > .nav-tabs {
 /*    background-color: #9d9d9d;*/
 }
@@ -37,6 +42,17 @@
     line-height: 40px;
     display: block;
 }
+
+.nav-tabs span {
+    display: block;
+    width: 150px;
+    height: 150px;;
+    border-radius: 75px;
+    background: url("../imgs/a1.png");
+    border: 1px solid deepskyblue;
+    margin-left: 10px;
+}
+
 
 .tabs-left > .nav-tabs {
     float: left;
@@ -75,8 +91,12 @@
 
 .col-sm-3 {
     height: 684px;
-    background: greenyellow;
+/*    background: greenyellow;*/
 }
 .col-1,.col-2,.col-3,.col-4 {
     height: 25%;
+}
+.panel-title img {
+    height: 100px;
+    width: 100%;
 }
