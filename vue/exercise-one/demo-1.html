@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css.css">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 <body>
@@ -42,7 +43,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="person in people">
+        <tr v-for="(person,index) in people">
             <td>{{ person.name }}</td>
             <td>{{ person.age }}</td>
             <td>{{ person.sex }}</td>

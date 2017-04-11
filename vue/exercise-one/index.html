@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 <body>
@@ -20,12 +21,29 @@
         <p v-if="seen">现在你看到我了</p>
     </div>
 
-    <div id="app-4">
+<div id="app-4">
         <p>{{message}}</p>
         <input v-model="message">
     </div>
+
+<div id="app-5">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+</div>
+
+<div id="app-6">
+    <p>{{message}}</p>
+    <button v-on:click="re">nizhuan</button>
+</div>
+
+
+
 </body>
         <script>
+
             var app=new Vue({
                 el:'#app',
                 data:{
@@ -53,5 +71,27 @@
                     message:'Hello Vue!'
                 }
             })
+
+            var app5=new Vue({
+                el: '#app-5',
+                data: {
+                    todos:[
+                        {text:'学习javascript'},
+                        {text:'xuexivue'},
+                        {text:'z'}
+                    ]
+                }
+            })
+        var app6 =new Vue({
+            el: '#app-6',
+            data:{
+                message:'hello'
+            },
+            methods: {
+                re:function(){
+                    this.message=this.message.split('').reverse().join('')
+                }
+            }
+        })
         </script>
 </html>
