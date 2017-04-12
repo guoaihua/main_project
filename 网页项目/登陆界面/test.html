@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>使用数据库实现web留言本</h1>
+    <form >
+        用户名：<input type="text" id="name">
+        密 码：<input type="password" id="password">
+        <button type="button" onclick="save()">点击提交</button>
+        <button type="button" onclick="search()" >查询用户名</button>
+        <input type="text" id="sea">
+        <input type="text" id="seaa">
+        <div class="show" id="show">
+
+        </div>
+    </form>
+
+
+
+    <script >
+        var db=openDatabase("mydb","1.0",1024*1024,function(){});
+        var show=document.getElementById('show');
+        function save(){
+            var name=document.getElementById('name').value;
+            var password=document.getElementById('password').value;
+            addData(name,password);
+            console.log(11);
+        }
+
+        function addData(name,password){
+
+            db.transaction(function(tx){
+               tx.executeSql('CREATE TABLE IF NOT EXISTS MyData(name TEXT,password TEXT)',[]);
+                tx.executeSql('INSERT INTO MyData VALUES(?,?)',[name,password],function(tx,rs){
+                    alert("插入成功");
+                },function(tx,error){
+                    alert(error.source+"/"+error.message);
+                });
+            });
+        }
+
+        function search(){
+            var cname=document.getElementById('sea').value;
+            var cp=document.getElementById('seaa').value;
+            db.transaction(function(tx){
+               tx.executeSql('SELECT * FROM MyData',[],function(tx,rs){
+                   for(var i=0;i<rs.rows.length;i++){
+                      if(rs.rows.item(i).name==cname||rs.rows.item(i).password==cp){
+                            alert("登录成功");
+                      }
+                   }
+                /*   alert("用户名不存在！");*/
+               });
+            });
+        }
+
+
+    </script>
+</body>
+</html>

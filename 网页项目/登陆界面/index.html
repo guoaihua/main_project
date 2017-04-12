@@ -15,16 +15,16 @@
       <div class="form_1">
           <form class="form-horizontal" role="form">
               <div class="form-group">
-                  <label for="firstname" class="col-sm-2 control-label">帐号</label>
+                  <label for="cname" class="col-sm-2 control-label">帐号</label>
                   <div class="col-sm-10">
-                      <input type="text" class="form-control" id="firstname"
+                      <input type="text" class="form-control" id="cname"
                              placeholder="请输入帐号" required>
                   </div>
               </div>
               <div class="form-group">
-                  <label for="lastname" class="col-sm-2 control-label">密码</label>
+                  <label for="cpassword" class="col-sm-2 control-label">密码</label>
                   <div class="col-sm-10">
-                      <input type="password" class="form-control" id="lastname"
+                      <input type="password" class="form-control" id="cpassword"
                              placeholder="请输入密码" required>
                   </div>
               </div>
@@ -38,15 +38,49 @@
                   </div>
               </div>
               <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary btn-lg" >登录</button>
+                  <div class=" col-sm-12">
+                      <button type="button" class="btn btn-primary " onclick="search()">登录</button>
+                      <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#mymodal">注册</button>
                   </div>
               </div>
           </form>
       </div>
   </div>
 
-
+    <!--注册弹出框-->
+    <div class="modal fade" id="mymodal">
+        <div class="modal-dialog">
+        <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="text-center">欢迎来到注册界面</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                     用户名：<input type="text" id="name" required placeholder="请输入用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                密 &nbsp;码：<input type="password" id="password" required placeholder="请输入密码">
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                手机号码：<input type="password" id="phone" required placeholder="请输入手机号码">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-danger">重置</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info" onclick="save()">确定</button>
+                    </div>
+        </div>
+        </div>
+    </div>
 
 <div class="footer">
     <div class="line"></div>
@@ -56,5 +90,52 @@
       <h6>东湖校区：武汉市武昌区东湖梨园渔光村1号 邮政编码：430077</h6>
 </div>
 
+<script >
+    var db=openDatabase("mydb","1.0",1024*1024,function(){});
+    var flag=false;
+    function save(){
+        var name=document.getElementById('name').value;
+        var password=document.getElementById('password').value;
+        var phone=document.getElementById('phone').value;
+        addData(name,password,phone);
+
+    }
+
+    function addData(name,password,phone){
+
+        db.transaction(function(tx){
+            tx.executeSql('CREATE TABLE IF NOT EXISTS MyData(name TEXT,password TEXT,phone TEXT)',[]);
+            tx.executeSql('INSERT INTO MyData VALUES(?,?,?)',[name,password,phone],function(tx,rs){
+                alert("插入成功");
+            },function(tx,error){
+                alert(error.source+"/"+error.message);
+            });
+        });
+    }
+
+    function search(){
+        var cname=document.getElementById('cname').value;
+        var cpassword=document.getElementById('cpassword').value;
+      /*  输入检测*/
+        if(cname!=''&&cpassword!=''){
+        db.transaction(function(tx){
+            tx.executeSql('SELECT * FROM MyData',[],function(tx,rs){
+                for(var i=0;i<rs.rows.length;i++){
+                    if((rs.rows.item(i).name==cname)&&(rs.rows.item(i).password==cpassword)){
+                        alert("登录成功");
+                        flag=true;
+                    }
+                }
+                if (flag==false){
+                    alert("登录失败");
+                }
+            });
+        });
+        }else {
+            alert("请输入完整信息！");
+        }
+    }
+
+</script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 }
 body {
     min-width: 1300px;
-    min-height: 750px;
-    overflow: hidden;
+    min-height: 1000px;
+    background-color: #000004!important;
 }
  /*表单样式开始*/
 .wrap {
@@ -14,8 +14,12 @@ body {
     margin-left: -215px;
     border: 2px double white;
     border-radius: 5px;
-
 }
+
+.img-responsive {
+    width: 100%;
+}
+
 .form_1:hover {
     opacity: 1;
 }
@@ -34,10 +38,7 @@ body {
     margin-left: 65px;
 }
 
-img {
-    width: 100%;
-    height: 100%;
-}
+
 .text {
     width: 400px;
     height: 100px;
@@ -137,4 +138,8 @@ img {
  .footer:hover::before,
   .footer:hover::after {
      transform: scale3d(1,1,1);
+ }
+
+ .modal-backdrop {
+     background-color: #e8e8e8;
  }
