@@ -4,41 +4,27 @@
     <meta charset="UTF-8">
     <title>父子组件</title>
     <script src="../vue.js"></script>
-    <script src="../vue-resource.js"></script>
-    <script>
-        window.onload = function () {
-            new Vue({
-                el:'#app',
-                components:{
-                    'aaa':{
-                        template:'#compoent',
-                        components:{
-                            'bbb':{
-                                template:'#com'
-                            }
-                        }
-                    }
-                }
-            })
 
-        };
-    </script>
 </head>
 <body>
 <div id="box">
-    <div id="app">
     <aaa></aaa>
-
+   </div>
+<template id="mycom">
+    <div>
+        <h3>这是一个组件测试</h3>
     </div>
-    <template id="compoent">
-        <div>This is a chlid component
-        <bbb></bbb>
-        </div>
-    </template>
-    <template id="com">
-       <div>This is</div>
+</template>
+    <script>
+            var app={
+                template:'#mycom'
+            };
+            Vue.component('aaa',app);
+            new Vue({
+                el:'#box'
+            });
 
-    </template>
-</div>
+    </script>
+
 </body>
 </html>
