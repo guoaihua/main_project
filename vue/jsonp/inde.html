@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+    <script src="../vue-resource.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="t1" @keyup="get()">
+        <ul>
+            <li v-for="value in myData">
+                {{value}}
+            </li>
+        </ul>
+
+    </div>
+<script >
+
+    new Vue({
+        el: '#app',
+        data: {
+            myData: [],
+            t1: ''
+        },
+        methods: {
+            get: function () {
+                console.log(11);
+                this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+                        {
+                            wd: this.t1
+                        }, {
+                            jsonp: 'cb'
+                        }).then(function (res) {
+                    this.myData = res.data.s;
+                }, function () {
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>
