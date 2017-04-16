@@ -9,7 +9,7 @@
 <body>
 
     <div id="app">
-        <input type="text" v-model="t1" @keyup="get()">
+        <input type="text" v-model="tl" @keyup="get()">
         <ul>
             <li v-for="value in myData">
                 {{value}}
@@ -23,20 +23,20 @@
         el: '#app',
         data: {
             myData: [],
-            t1: ''
+            tl: ''
         },
         methods: {
             get: function () {
                 console.log(11);
                 this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
                         {
-                            wd: this.t1
+                            wd:this.tl
                         }, {
                             jsonp: 'cb'
                         }).then(function (res) {
-                    this.myData = res.data.s;
+                    this.myData = res.data.g;
                 }, function () {
-                })
+                });
             }
         }
     })
