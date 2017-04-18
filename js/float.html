@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动的深入理解</title>
+    <style>
+        *{margin: 0;}
+        .father {
+            margin: 0 auto;
+            width: 200px;
+            border: 1px solid greenyellow;
+/*            overflow: auto; // hidden 也可以
+            zoom: 1;*/
+  /*          float: left;*/
+            display: table;
+        }
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+            float: right;
+        }
+/*        .father::after {
+            clear: both;
+            content: "";
+            display: block;
+        }*/
+        
+
+    </style>
+</head>
+<body>
+        <div class="father">
+            <div class="child"></div>
+        </div>
+</body>
+</html>

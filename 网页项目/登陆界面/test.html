@@ -48,7 +48,7 @@
             db.transaction(function(tx){
                tx.executeSql('SELECT * FROM MyData',[],function(tx,rs){
                    for(var i=0;i<rs.rows.length;i++){
-                      if(rs.rows.item(i).name==cname||rs.rows.item(i).password==cp){
+                      if(rs.rows.item(i).name==cname&&rs.rows.item(i).password==cp){
                             alert("登录成功");
                       }
                    }

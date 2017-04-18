@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Storage</title>
+</head>
+<body>
+    <h2>网页留言簿</h2>
+    <textarea name="input" id="input" cols="30" rows="10"></textarea> <br/>
+    <hr/>
+    <input type="button" onclick="saveStorage()" value="保存数据">
+    <input type="button" onclick="loadStorage()" value="提取数据">
+    <hr/>
+    <div id="show">
+adad
+    </div>
+    <script>
+        var input=document.getElementById('input');
+        var news=document.getElementById('show');
+        // 方法一：sessionStorage
+/*        function saveStorage(){
+            var str=input.value;
+            sessionStorage.setItem("message"+parseInt(Math.random()*10),str);
+        }
+        function loadStorage(){
+            var msg=sessionStorage.getItem("message");
+            console.log(msg);
+            news.innerHTML=msg;
+        }*/
+
+        // 方法二：loaclStorage
+         function saveStorage(){
+             var str=input.value;
+             localStorage.setItem('message',str);
+         }
+
+        function loadStorage(){
+            var msg=localStorage.getItem("message");
+            news.innerHTML=msg;
+        }
+
+    </script>
+</body>
+</html>
