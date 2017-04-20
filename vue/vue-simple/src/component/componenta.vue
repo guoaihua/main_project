@@ -1,7 +1,9 @@
 <template>
 	<div id="search-input">
 	<bbb @getindex='getIndex'></bbb>
+
 		<input type="text" v-model="keywords" @keyup="get($event)" @keydown.down="select()" @keyup.up="selectUp()" 
+
 		@keydown.up.prevent="selectUp()">
 
 		<button type="button" @click="search">搜索</button>
@@ -13,11 +15,12 @@
 					</li>
 				</ul>
 		</div>
+			<i @click="clear">Ⅹ</i>	
 	</div>
 </template>
 <script>
 
-import bbb from './conponentb.vue'; 
+import bbb from './componentb.vue'; 
 	export default {
 	 components:{
     bbb
@@ -59,6 +62,7 @@ import bbb from './conponentb.vue';
 				});
 				
 			},
+
 			select:function(){
 				this.now++;
 				 if (this.now == this.mydata.length) {
@@ -66,6 +70,7 @@ import bbb from './conponentb.vue';
             }
             this.keywords = this.mydata[this.now];
 			},
+
 			selectUp:function(){
 					 this.now--;
 		            //同上
@@ -80,7 +85,11 @@ import bbb from './conponentb.vue';
 			},
 			getIndex:function(index){
 				this.searchindex = index;
-			}
+			},
+				clear:function(){
+					this.keywords='';
+					this.mydata=[];
+				}
 		}
 	}
 </script>
@@ -106,4 +115,10 @@ import bbb from './conponentb.vue';
 	background:white;
 	padding-left:30px;
 }
+ i {
+		position:absolute;
+		top:152px;
+		right:110px;
+		cursor:pointer;
+	}
 </style>

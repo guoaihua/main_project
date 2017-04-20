@@ -9,7 +9,7 @@
 <body>
 
 <div id="app">
-    <input type="text" v-model="tl" @keyup="get()">
+    <input type="text" v-model="t" @keyup="get()">
     <ul>
         <li v-for="value in myData">
             {{value}}
@@ -23,19 +23,12 @@
         el: '#app',
         data: {
             myData: [],
-            tl: ''
+            t: ''
         },
         methods: {
             get: function () {
-                console.log(11);
-                this.$http.jsonp('',
-                        {
-                            wd:this.tl
-                        }, {
-                            jsonp: 'cb'
-                        }).then(function (res) {
-                    this.myData = res.data.g;
-                }, function () {
+                this.$http.jsonp('https://pb.sogou.com/pv.gif?uigs_productid=webgo&inputstr=a&istrlen=1&query=' + this.t+ '&encodein=utf-8&encodeout=utf-8').then(function(res){
+                    this.myData=res.data.s;
                 });
             }
         }

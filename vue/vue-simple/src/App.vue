@@ -8,10 +8,11 @@
 </template>
 
 <script>
-import aaa from './component/componenta.vue';  // 引入组件
+import aaa from './component/componenta.vue';  
+//引入组件 
 
 export default {
-  components:{                // 组侧第一个组件
+  components:{             
     aaa
   }
 }
