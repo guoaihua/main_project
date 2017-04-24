@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Person(){
+    }
+    Person.prototype.name="ggg";
+    Person.prototype.age="21";
+    Person.prototype.saySomething=function(){
+        console.log(this.name+"."+this.age);
+    }
+
+    var hua=new Person();
+    alert(hua.age);
+    hua.saySomething();
+
+
+</script>
+</body>
+</html>
