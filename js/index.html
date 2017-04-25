@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script >
+/*            function create (){
+                var arr=new Array();
+                for (var i=0;i<10;i++){
+
+                        arr[i].i=i;
+                        arr[i]=function(){
+                            /!*  console.log(this+i);*!/
+                            return this.i;
+                        }
+                    }
+
+                return arr;
+            }
+            var a=create();
+            console.log(a[0]()); // 输出为10*/
+(function(){
+    var arr=[1,2,3]
+    for(var i = 0;i<4;i++){
+
+        console.log(arr[i]);
+        //为当前数组项即当前 p 对象添加一个名为 i 的属性,值为循环体的 i 变量的值,
+        //此时当前 p 对象的 i 属性并不是对循环体的 i 变量的引用,而是一个独立p 对象的属性,属性值在声明的时候就确定了
+        //(基本类型的值都是存在栈中的,当有一个基本类型变量声明其等于另一个基本变量时,此时并不是两个基本类型变量都指向一个值,而是各自有各自的值,但值是相等的)
+        arr[i].p = i;
+        arr[i].onclick = function () {
+            alert(this.p);
+        }
+    }
+})();
+
+            // 一
+/*            function create (){
+                var arr=new Array();
+                for (var i=0;i<10;i++){
+                    (function(n){
+                        arr[n]=function(){
+                        return n;
+                    }
+                    })(i);// 传入循环变量i
+
+                };
+                return arr;
+            }
+            var a=create();
+            console.log(a[0]());  // 输出为0*/
+
+
+/*var name = "The Window";
+var object = {
+    name : "My Object",
+    getNameFunc : function(){
+        console.log(this);
+        return function(){
+            console.log(this);
+            return this.name;
+        };
+    }
+};
+alert(object.getNameFunc()());*/
+        </script>
+</body>
+</html>
