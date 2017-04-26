@@ -59,3 +59,13 @@
     color: #000000;
     font-size: 20px;
 }
+
+#form-center {
+    width: 80%;
+    margin-left: 20px;
+}
+.form-group input {
+    width: 400px;
+    height: 30px;
+    padding-left: 10px;
+}
