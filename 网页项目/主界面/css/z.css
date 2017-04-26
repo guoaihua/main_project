@@ -191,28 +191,39 @@ body{
 
   /*侧边栏*/
  .aside {
-        width: 5%;
+        width: 200px;
         height: 400px;
         position: fixed;
-        bottom: 100px;
-        left: 5%;
+        bottom: 150px;
+        left: 2%;
+     border-radius: 10px;
+        z-index: 99;
+        display: none;
 /*        background-color: yellowgreen;*/
  }
  .aside ul {
         list-style: none;
-        padding: 5px;
-     margin: 0;
+        padding-left: 5px;
+           margin: 0;
  }
  .aside li {
-     width: 80px;
+     width: 100%;
      height: 50px;
      line-height: 50px;
-     text-align: center;
-     border: 1px solid deepskyblue;
      margin-top: -1px;
  }
 
 .aside li a {
     text-decoration: none;
     color: #5f5050;
+}
+
+.asideshow {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: deepskyblue;
+    position: fixed;
+    left: 16px;
+    bottom: 150px;
 }

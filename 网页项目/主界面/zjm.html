@@ -34,6 +34,15 @@
                 header.style.background="transparent";
             }
         }
+        $(function(){
+            $(".asideshow").mousemove(function(){
+                $(".aside").show();
+            }).mouseout(function(){
+                $(".aside").mouseout(function(){
+                    $(".aside").hide();
+                });
+            })
+        });
         }
     </script>
 </head>
@@ -211,15 +220,30 @@
         </div>
     </div>
   <hr/>
-    <div class="aside">
-        <ul>
-            <li><i class="fa icon"></i><a href="#"> <i class="fa icon-heart"></i> 服装一</a></li>
-            <li><i class=""></i><a href="#two"><i class="fa icon-picture"></i> 服装2</a></li>
-            <li><i class=""></i><a href="#three"> <i class="fa icon-camera"></i> 服装3</a></li>
-            <li><i class=""></i><a href="#"> <i class="fa icon-star"></i> 服装4</a></li>
-            <li><i class=""></i><a href="#"><i class="fa icon-book"></i> 服装一</a></li>
-            <li><i class=""></i><a href="#"> <i class="icon-twitter"></i> 服装一</a></li>
-        </ul>
+
+    <div class="asideshow" >
+        aaa
+    </div>
+
+    <div class="aside panel panel-info">
+        <div class="panel-title">
+           <button type="button" class="btn bg-info">我的栏目</button>
+            <i class=""></i>
+        </div>
+        <div class="panel-body">
+            <ul>
+            <li><a href="#">  <i class="fa icon-heart"></i>  服装一 </a> <i class="fa icon-time pull-right" ></i></li>
+            <li><a href="#two"><i class="fa icon-picture"></i> 服装2</a> <i class="fa icon-time pull-right" ></i></li>
+            <li><a href="#three"><i class="fa icon-camera"></i> 服装3</a> <i class="fa icon-time pull-right" ></i></li>
+            <li><a href="#"> <i class="fa icon-star"></i> 服装4</a> <i class="fa icon-time pull-right" ></i></li>
+            <li><a href="#"><i class="fa icon-book"></i> 服装一</a> <i class="fa icon-time pull-right" ></i></li>
+            <li><a href="#"> <i class="icon-twitter"></i> 服装一</a> <i class="fa icon-time pull-right" ></i></li>
+            </ul>
+        </div>
+
+
+
+
     </div>
  <div class="footer">
      武汉纺织大学电子电气工程学院
