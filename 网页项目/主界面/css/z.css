@@ -191,15 +191,19 @@ body{
 
   /*侧边栏*/
  .aside {
-        width: 200px;
-        height: 400px;
+        width: 50px;
+        height: 50px;
+
         position: fixed;
         bottom: 150px;
         left: 2%;
-     border-radius: 10px;
+     border-radius: 25px;
+     overflow: hidden;
         z-index: 99;
-        display: none;
-/*        background-color: yellowgreen;*/
+     text-align: center;
+      /*  display: none;*/
+     line-height: 60px;
+        background-color: deepskyblue;
  }
  .aside ul {
         list-style: none;
@@ -226,4 +230,7 @@ body{
     position: fixed;
     left: 16px;
     bottom: 150px;
+}
+.panel-body {
+    margin-left: 0px;
 }

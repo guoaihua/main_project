@@ -34,15 +34,30 @@
                 header.style.background="transparent";
             }
         }
+
+
+
         $(function(){
-            $(".asideshow").mousemove(function(){
-                $(".aside").show();
-            }).mouseout(function(){
-                $(".aside").mouseout(function(){
-                    $(".aside").hide();
-                });
-            })
+            $(".aside").hover(function(){
+                $(".aside").animate({
+                    width:200,
+                    height:400,
+
+                },1000).css("text-align","left");
+
+                $('.aside .icon-plus').addClass('hide');
+        },function(){
+                $(".aside .icon-plus").removeClass('hide');
+                $(".aside").animate({
+                    width:50,
+                    height:50,
+                },1000).css("text-align","center");
+            }
+            );
+
+
         });
+
         }
     </script>
 </head>
@@ -62,13 +77,13 @@
                        更多业务 <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                       <li><a href="#">jmeter</a></li>
-                       <li><a href="#">EJB</a></li>
-                       <li><a href="#">Jasper Report</a></li>
+                       <li><a href="#">等待建设</a></li>
+                       <li><a href="#">等待建设</a></li>
+                       <li><a href="#">等待建设</a></li>
                        <li class="divider"></li>
-                       <li><a href="#">分离的链接</a></li>
+                       <li><a href="#">等待建设</a></li>
                        <li class="divider"></li>
-                       <li><a href="#">另一个分离的链接</a></li>
+                       <li><a href="#">等待建设</a></li>
                     </ul>
                  </li>
               </ul>
@@ -221,30 +236,25 @@
     </div>
   <hr/>
 
-    <div class="asideshow" >
-        aaa
-    </div>
-
     <div class="aside panel panel-info">
-        <div class="panel-title">
-           <button type="button" class="btn bg-info">我的栏目</button>
-            <i class=""></i>
+            <div class="panel-title">
+                <i class="fa icon-plus icon-2x"></i>
+                <button type="button" class="btn bg-info btn-xs " id="button">我的栏目</button>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li><a href="#">  <i class="fa icon-heart"></i>  服装一 </a> <i class="fa icon-time pull-right" ></i></li>
+                    <li><a href="#two"><i class="fa icon-picture"></i> 服装2</a> <i class="fa icon-time pull-right" ></i></li>
+                    <li><a href="#three"><i class="fa icon-camera"></i> 服装3</a> <i class="fa icon-time pull-right" ></i></li>
+                    <li><a href="#"> <i class="fa icon-star"></i> 服装4</a> <i class="fa icon-time pull-right" ></i></li>
+                    <li><a href="#"><i class="fa icon-book"></i> 服装一</a> <i class="fa icon-time pull-right" ></i></li>
+                    <li><a href="#"> <i class="icon-twitter"></i> 服装一</a> <i class="fa icon-time pull-right" ></i></li>
+                </ul>
+            </div>
         </div>
-        <div class="panel-body">
-            <ul>
-            <li><a href="#">  <i class="fa icon-heart"></i>  服装一 </a> <i class="fa icon-time pull-right" ></i></li>
-            <li><a href="#two"><i class="fa icon-picture"></i> 服装2</a> <i class="fa icon-time pull-right" ></i></li>
-            <li><a href="#three"><i class="fa icon-camera"></i> 服装3</a> <i class="fa icon-time pull-right" ></i></li>
-            <li><a href="#"> <i class="fa icon-star"></i> 服装4</a> <i class="fa icon-time pull-right" ></i></li>
-            <li><a href="#"><i class="fa icon-book"></i> 服装一</a> <i class="fa icon-time pull-right" ></i></li>
-            <li><a href="#"> <i class="icon-twitter"></i> 服装一</a> <i class="fa icon-time pull-right" ></i></li>
-            </ul>
-        </div>
 
 
 
-
-    </div>
  <div class="footer">
      武汉纺织大学电子电气工程学院
  </div>
