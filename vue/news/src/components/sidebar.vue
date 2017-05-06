@@ -1,7 +1,7 @@
 <template>
 	<div class="sidebar">
 		<i class="glyphicon glyphicon-plus" @click="addNote"></i>
-    	<i class="glyphicon glyphicon-star"></i>
+    	<i class="glyphicon glyphicon-star" @click="toggleFavorite" :class="{starred: activeNote.favorite}"></i>
   	    <i class="glyphicon glyphicon-remove" @click="delNote"></i>
 	</div>
 </template>
@@ -12,9 +12,13 @@
 	export default {
 		methods:mapActions([
 			'addNote',
-			'delNote'
+			'delNote',
+			'toggleFavorite'
 		]
-		)
+		),
+		computed:mapGetters([
+			'activeNote'
+			])
 	}
 
 </script>
@@ -26,4 +30,7 @@
 			margin-top:20px;
 			cursor: pointer;
 	}
+	.starred {
+  color: #F7AE4F;
+}
 </style>

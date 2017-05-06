@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 Vue.use(Vuex);
 
 const state= {
 	notes: [],
-	activeNote:{}
+	activeNote:{},
+	data:'all'
 	}
 
 
@@ -27,13 +27,19 @@ const actions={
 		commit
 	})=>{
 		commit('delNote')
+	},
+	toggleFavorite:({
+		commit
+	})=>{
+		commit('toggleFavorite')
 	}
 }
 
 const mutations={
 	addNote(state){
 		const newNote={
-			text:'new note'
+			text:'new note',
+			favorite:false
 		};
 		state.notes.push(newNote); 
 		state.activeNote=newNote;          //添加笔记
@@ -46,20 +52,29 @@ const mutations={
 		state.activeNote=note;
 	},
 	delNote(state){
-		state.notes.$els.remove(state.activeNote);
+		let indexa=state.notes.indexOf(state.activeNote)
+		state.notes.splice(indexa,1);
 		state.activeNote=state.notes[0];
-	}
+	},
+	toggleFavorite(state){
+		state.activeNote.favorite = !state.activeNote.favorite;	
+	},
+
 }
 
 const getters={
  	notes(state){
- 		return state.notes
+ console.log(state);	
+ 			return state.notes	
  	},
  	activeText(state){
  		return state.activeNote.text
  	},
  	activeNote(state){
  		return state.activeNote
+ 	},
+ 	show(state){
+ 		return state.data
  	}
 
 }
