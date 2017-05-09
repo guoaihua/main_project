@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get方法</title>
+</head>
+<body>
+    <form >
+        <input type="text" id="username">
+        <input type="text" id="password">
+        <span id="show">22</span>
+        <input type="button" id="submit" value="点击提交">
+    </form>
+    <script>
+        var username=document.getElementById('username').value;
+        var password=document.getElementById('password').value;
+        var submit=document.getElementById('submit');
+
+        submit.onclick=function(){
+            var http=new XMLHttpRequest();
+            var url='test.php?username='+username+'&password='+password;
+            http.open('GET',url,true);
+            http.onreadystatechange=function(){
+                if(http.readyState===4&&http.status==200){
+                    var data=http.responseText;
+                    console.log(data);
+                }
+            };
+            http.send(null);
+        };
+
+    </script>
+</body>
+</html>
