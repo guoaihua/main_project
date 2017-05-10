@@ -1,11 +1,17 @@
 <?php
 	//定义数组保存学生信息
+	include './page.php';
 	$info = array(
 		array('name' => '王小六','birth'=>'1996-08-07','snum'=>'012132132' ),
 		array('name' => '张小三','birth'=>'1996-09-17','snum'=>'012132213' ),
 		array('name' => '陈小五','birth'=>'1993-08-27','snum'=>'012322112' ),
 		array('name' => '孙小七','birth'=>'1994-08-07','snum'=>'012123211' ),
 		);
+	$total_num=count($info);
+	$prepage=4;
+	$page=isset($_GET['page'])?(int)$_GET['page']:1;
+	$total_page=ceil($total_num/$prepage);
+
 ?>
 
 <table>
@@ -21,3 +27,4 @@
 
 
 </table>
+<div><?php echo showPage($page,$total_page);?></div>
