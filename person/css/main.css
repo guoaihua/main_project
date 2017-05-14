@@ -22,7 +22,7 @@ body {
     width:200px;
     height:120px;
     float:left;
-    margin:10px
+    margin:10px;
 }
 .item_content {
     width:740px;
@@ -36,6 +36,8 @@ body {
     text-align:center;
     cursor:pointer;
     background:#ccc;
+    border: 1px solid black;
+ /*   opacity: 0;*/
 }
 .item_content .item img {
     width:200px;
@@ -82,3 +84,30 @@ i {
     font-size: 24px;
     color: #222222;
 }
+
+/*
+* 拖动菜单配置
+*/
+.showa,
+.showb,
+.showc,
+.showd,
+.showe{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: block;
+    text-align: center;
+    }
+
+.showa { background: url('../font/menu1.svg') no-repeat center;
+    background-size: 130% 130%;}
+.showb { background: url('../font/menu2.svg') no-repeat center;
+    background-size: 80% 80%;}
+.showc { background: url('../font/menu3.svg') no-repeat center;
+    background-size: 50% 50%;}
+.showd { background: url('../font/menu4.svg') no-repeat center;
+    background-size: 50% 80%;}
+.showe { background: url('../font/menu5.svg') no-repeat center;
+    background-size: 50% 50%;}
