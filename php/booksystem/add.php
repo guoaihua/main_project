@@ -47,8 +47,8 @@
 		<div class="container">
 
 			<ul>
-				<li> <a href="#">首页</a></li>
-				<li> <a href="./insert.php">添加图书</a> </li>
+				<li> <a href="./index.php">首页</a></li>
+				<li> <a href="#">添加图书</a> </li>
 				<li> <a href="./del.php">删除图书</a> </li>
 			</ul>
 
@@ -72,14 +72,12 @@
 	mysql_select_db('test_a');
 	mysql_query('set names utf8'); // 设置数据库通信编码
 	if(isset($_POST['submit'])){
-			echo "提交过来了";
 			$bookName=$_POST['bookName'];
 			$bookAuthor=$_POST['bookAuthor'];
 			$bookType=$_POST['bookType'];
 			$bookPrice=$_POST['bookPrice'];
-			echo $bookName;
 			$result=mysql_query("INSERT INTO booksystem (bookID,bookName,bookAuthor,bookType,bookPrice)VALUES(null,'$bookName','$bookAuthor','$bookType','$bookPrice')")or die(mysql_error());
-
+			echo $bookName.'：添加成功';
 	}
 
 	 ?>
