@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta HTTP-EQUIV="pragma"CONTENT="no-cache">
+
+    <meta HTTP-EQUIV="Cache-Control"CONTENT="no-cache, must-revalidate">
+
+    <meta HTTP-EQUIV="expires"CONTENT="0">
+    <title>书城主页</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a href="./index.html" class="navbar-brand">主页</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="./add.html">添加图书</a></li>
+                    <li><a href="#">删除图书</a></li>
+                    <li><a href="#">查询</a></li>
+                </ul>
+            </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+               <div class="panel panel-success">
+                   <div class="panel-heading">
+                       <h6>添加图书信息</h6> 
+                   </div>
+                   <div class="panel-body">
+
+                       <form class="form-horizontal" role='form' id="form1">
+                           <div class="form-group">
+                               <label for="bookName" class="col-sm-3 control-label">书籍名称</label>
+                               <div class="col-sm-9">
+                                   <input type="text" id="bookName" class="form-control" placeholder="请输入文字" name="bookName">
+                               </div>                              
+                           </div>
+
+                           <div class="form-group">
+                               <label for="bookAuthor" class="col-md-3 control-label">书籍作者</label>
+                               <div class="col-md-9">
+                                   <input type="text" id="bookAuthor" class="form-control" placeholder="请输入作者" name="bookAuthor">
+                               </div>                              
+                           </div>
+
+                             <div class="form-group">
+                               <label for="bookType" class="col-md-3 control-label">书籍类型</label>
+                               <div class="col-md-9">
+                                   <select class="form-control" id="bookType" name="bookType">
+                                       <option value="文学">文学</option>
+                                        <option value="计算机">计算机</option>
+                                         <option value="哲学">哲学</option>
+                                          <option value="百科">百科</option>
+                                   </select>
+                               </div>                              
+                             </div>
+
+                           <div class="form-group">
+                               <label for="bookPrice" class="col-md-3 control-label">书籍价格</label>
+                               <div class="col-md-9">
+                                   <input type="text" id="bookPrice" class="form-control" placeholder="请输入价格" name="bookPrice">
+                               </div>                              
+                           </div>
+                            <input type="button" value='提交' class="btn btn-success pull-right" id="submit">
+                       </form>
+                   </div>
+               </div>
+
+            </div>
+            
+           
+
+        </div>
+    </div>
+    <script>
+            $(function(){
+                $('#submit').click(function(){
+                        console.log(11);
+                        $.ajax({
+                            type:'POST',
+                            url:'./add1.php',
+                            data:$('#form1').serialize(),
+                            async:false,
+                            success:function(data){
+                                    console.log(data);
+                            }
+                        })
+                });
+            });
+    </script>
+</body>
+</html>
