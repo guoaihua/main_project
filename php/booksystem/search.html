@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta HTTP-EQUIV="pragma"CONTENT="no-cache">
+
+    <meta HTTP-EQUIV="Cache-Control"CONTENT="no-cache, must-revalidate">
+
+    <meta HTTP-EQUIV="expires"CONTENT="0">
+    <title>书城主页</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a href="./index.html" class="navbar-brand">主页</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="./add.html">添加图书</a></li>
+                    <li><a href="#">查询图书</a></li>
+                  
+                </ul>
+            </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+               <div class="panel panel-success">
+                   <div class="panel-heading">
+                       <h6>查询图书信息</h6> 
+                   </div>
+                       <div class="panel-body">
+                            <form id="myForm">
+                                <div class="form-group">
+                                      <div class="col-sm-12">
+                                          <input type="text" name="bookName" placeholder="  请输入书籍名称"> 
+                                          <input type="button" value="查询" id='seabtn' class="btn-success btn-sm">
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                      <div class="col-sm-12">
+                               <table id="show_table" class="table table-striped">
+                            
+                                </table>
+                                      </div>
+                                </div>
+                            </form>      
+                            <div class="col-sm-12">
+                                          <input type="text" id="delbookName" placeholder="  请输入书籍名称"> 
+                                          <input type="button" value="删除" id='delbtn' class="btn-info btn-xm">
+                                          <div id="show_info"></div>
+                             </div>
+                       </div>
+               </div>
+               </div>
+
+            </div>
+            
+           
+
+        </div>
+    </div>
+    <script>
+            $(function(){
+                $('#seabtn').click(function(){
+                        console.log(11);
+                        $.ajax({
+                            type:'POST',
+                            url:'./search.php',
+                            data:$('#myForm').serialize(),
+                            async:false,
+                            success:function(data){
+                                    var str=$.parseJSON(data);
+                                    console.log(data);
+                                    var a='';
+       var reshtml='<tr><th>书籍名称</th> <th>书籍作者</th> <th>书籍类型</th> <th>书籍价格</th> </tr>';
+            $.each(str,function(index,content){
+                console.log(content.bookName+content.bookAuthor+content.bookType+content.bookPrice);
+                a+=content.bookName+content.bookAuthor+content.bookType+content.bookPrice;
+               reshtml+='<tr><td>'+content.bookName+'</td> <td>'+content.bookAuthor+'</td> <td>'+content.bookType+'</td> <td>'+content.bookPrice+'</td></tr>';
+            });
+                          $('#show_table').html(
+                            reshtml
+                          )
+                             }
+                        })
+                });
+            });
+
+            $(function(){
+                $('#delbtn').click(function(){
+                    console.log($('#delbookName').val());
+                    $.post("./del1.php",{
+                      bookName:$('#delbookName').val()
+                    },function(data){
+                        $('#show_info').html(data);
+                    });
+                });
+            });
+
+    </script>
+</body>
+</html>
