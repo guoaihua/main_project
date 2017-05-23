@@ -1,14 +1,16 @@
 var timeOut;
 
 class Item {
-    constructor(icon, backgroundColor) {
+    constructor(text,backgroundColor) {
         this.$element = $(document.createElement("div"));
-        this.icon = icon;
         this.$element.addClass("item");
         this.$element.css("background-color", backgroundColor);
         var i = document.createElement("i");
-        $(i).addClass("fi-" + icon);
+        console.log(text);
+        $(i).addClass("show"+text);
         this.$element.append(i);
+
+      /*  this.$element[0].innerHTML=text;*/
         this.prev = null;
         this.next = null;
         this.isMoving = false;
@@ -150,11 +152,11 @@ class Menu {
 }
 
 var menu = new Menu("#myMenu");
-var item1 = new Item("list");
-var item2 = new Item("torso", "#FF5C5C");
-var item3 = new Item("social-facebook", "#5CD1FF");
-var item4 = new Item("paypal", "#FFF15C");
-var item5 = new Item("link", "#64F592");
+var item1 = new Item("a");
+var item2 = new Item("b", "deepblue");
+var item3 = new Item("c", "#5CD1FF");
+var item4 = new Item("d", "#FFF15C");
+var item5 = new Item("e", "#64F592");
 
 menu.add(item1);
 menu.add(item2);

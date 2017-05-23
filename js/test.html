@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+    <script>
+
+       // 将字符串反过来排列
+        function reverseString(str){
+            var arr1=[],arr2=[];
+            arr1=str.split('');
+            console.log(arr1);
+            arr2=arr1.reverse();
+            console.log(arr2);
+            str=arr2.join('');
+            console.log(typeof str);
+            return str;
+
+        }
+
+       var a= reverseString('hello');
+
+       // 计算一个数的阶乘
+
+       function jiechen(num){
+           return (num<1)?1:num*jiechen(num-1); // 递归操作
+       }
+
+       console.log(5);
+
+
+    // 检验一个回文数
+              function palindrome(str) {
+              // Good luck!
+                  console.log(str);
+             var newStr= str.replace(/\W+/g,'');//匹配所有非单词的字符，替换为空字符串
+                  console.log(newStr);
+              newStr= newStr.replace(/\_+/g,'');//匹配所有下划线，替换为空字符串
+              newStr=newStr.toLowerCase();
+              //转化字符串为小写
+              var arr1= newStr.split('');
+            ;
+              var arr2=arr1.reverse();
+              var newStr2=arr2.join('');
+            //重构倒序的字符串
+              if(newStr==newStr2){//比较1
+                  return true;
+              }else{
+                  return false;
+              }
+        }
+       console.log(palindrome("non..non ."));
+
+
+        function palindrome(str) {
+            str=str.toLowerCase();
+            var newstr=str.replace(/\W+/g,'');
+            newstr=newstr.replace(/\_/g,'');
+            console.log(newstr);
+            var arr=newstr.split('');
+            newarr=arr.reverse();
+            var s1=newarr.join('');
+            console.log(typeof s1+typeof newstr);
+            return (newstr==s1)?true:false;
+        }
+
+
+
+       console.log( palindrome("eye ew"));
+    </script>
+</body>
+</html>
