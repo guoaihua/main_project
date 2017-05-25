@@ -10,7 +10,7 @@ body {
 
 body {
     position: relative;
-    background: url('../imgs/start.jpg') no-repeat;
+    background: url('../imgs/start.png') no-repeat;
     background-size: 100% 100%;
 }
 
@@ -46,7 +46,7 @@ body {
     /*   opacity: 0;*/
 }
 
-.item_content .item img {
+.item_content .item i {
     width: 200px;
     height: 120px;
     border-radius: 6px;
@@ -130,4 +130,65 @@ i {
 .showe {
     background: url('../font/menu5.svg') no-repeat center;
     background-size: 50% 50%;
+}
+
+
+.sprite {
+    background-image: url(../imgs/spritesheet%20.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-panel-1 {
+    width: 200px;
+    height: 120px;
+    background-position: -5px -5px;
+}
+
+.sprite-panel-2 {
+    width: 200px;
+    height: 120px;
+    background-position: -215px -5px;
+}
+
+.sprite-panel-3 {
+    width: 200px;
+    height: 120px;
+    background-position: -5px -135px;
+}
+
+.sprite-panel-4 {
+    width: 200px;
+    height: 120px;
+    background-position: -215px -135px;
+}
+
+.sprite-panel-5 {
+    width: 200px;
+    height: 120px;
+    background-position: -5px -265px;
+}
+
+.sprite-panel-6 {
+    width: 200px;
+    height: 120px;
+    background-position: -215px -265px;
+}
+
+.sprite-panel-7 {
+    width: 200px;
+    height: 120px;
+    background-position: -425px -5px;
+}
+
+.sprite-panel-8 {
+    width: 200px;
+    height: 120px;
+    background-position: -425px -135px;
+}
+
+.sprite-panel-9 {
+    width: 200px;
+    height: 120px;
+    background-position: -425px -265px;
 }

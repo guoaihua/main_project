@@ -2,7 +2,7 @@
 
 .wrap {
     margin: 30px auto;
-    width: 80%;
+    width: 840px;
     text-align: center;
 }
 
@@ -13,7 +13,7 @@
 }
 .menu3d {
     height: 58px;
-    padding-left: 160px;
+    width: 840px;
 }
 .menu3d li {
     background: -moz-linear-gradient(#292929, #252525);
