@@ -1,8 +1,37 @@
+* {
+    margin: 0px;
+}
 html,body{
     width: 100%;
     height: 100%;
 }
 
 body {
-    background: url("../imgs/resume-bg.jpg");
+
+}
+
+.wborder {
+    background-color: #ccc;
+    padding: 40px 50px 40px 50px;
+}
+
+    /*左侧部分开始*/
+
+.cont-left {
+    background-color: #254665;
+}
+.txt-left {
+    padding: 20px;
+}
+.logo {
+    width: 180px;
+    height: 200px;
+    padding: 5px;
+    border: 1px solid white;
+}
+
+    /*左侧部分结束*/
+
+.cont-right {
+    background-color: white;
 }
