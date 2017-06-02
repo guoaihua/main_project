@@ -1,0 +1,71 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.header {
+    min-width: 1300px;
+    height: 60px;
+   background-color: #99cccc;
+}
+
+.nav1 {
+    width: 90%;
+    height: 60px;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.wrap {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.tab-content {
+    margin-top:20px;
+}
+.tab-content th {
+    text-align: center;
+}
+
+.ws th:nth-child(1) {width: 35%}
+.ws th:nth-child(2) {width: 16.25%}
+.ws th:nth-child(3) {width: 16.25%}
+.ws th:nth-child(4) {width: 16.25%}
+.ws th:nth-child(5) {width: 16.25%}
+
+.banner p {
+    float: left;
+    line-height: 50px;
+}
+.clear {
+    clear: both;
+}
+
+#nav-tabs {
+    width: 600px;
+    float: right;
+    border-bottom: none;
+    font-size: 20px;
+    font-family: "STSong", STXingkai, FangSong;
+    color: #9d9d9d;
+}
+.footer {
+    position: fixed;
+    bottom: 20px;
+    width: 80%;
+    left: 50%;
+    margin-left: -40%;
+    text-align: center;
+    color: #000000;
+    font-size: 20px;
+}
+
+#form-center {
+    width: 80%;
+    margin-left: 20px;
+}
+.form-group input {
+    width: 400px;
+    height: 30px;
+    padding-left: 10px;
+}
