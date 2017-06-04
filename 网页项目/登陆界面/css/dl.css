@@ -88,7 +88,7 @@ body {
     content: "";
     position: absolute;
     width: 2px;
-    height: 120px;
+    height: 102px;
     background-color: white;
     left: -2px;
     top: 0px;
@@ -100,7 +100,7 @@ body {
     content: "";
     position: absolute;
     width: 3px;
-    height: 120px;
+    height: 102px;
     background-color: white;
     right: -2px;
     top: 0px;

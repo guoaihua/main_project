@@ -130,6 +130,7 @@
                 for(var i=0;i<rs.rows.length;i++){
                     if((rs.rows.item(i).name==cname)&&(rs.rows.item(i).password==cpassword)){
                         alert("登录成功");
+                        window.location.href="../主界面/zjm.html";
                         flag=true;
                     }
                 }
@@ -142,7 +143,6 @@
             alert("请输入完整信息！");
         }
     }
-
 </script>
 </body>
 </html>
