@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单中心</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/order.css">
+
+    <link rel="stylesheet" href="Font-Awesome/css/font-awesome.min.css">
+
+    <script type="text/javascript">
+        window.onload=function(){
+        var dd=document.getElementById("dd");
+        dd.addEventListener("click",function(ev){
+            this.parentNode.parentNode.parentNode.parentNode.style.display="none";
+/*           var ev=event||window.event;
+            var target=ev.target;
+            console.log(target);
+            console.log(this);*/
+        });
+
+            function fun(name,year){
+                this.name=name;
+                this.year=year;
+      /*          return function (){
+                    age: 22;
+                }*/
+            }
+             fun.say="haha";
+            fun.prototype.say="haha";
+            fun.prototype.name="haha";
+            var a=new fun("q","b");
+            console.log(a.name)
+            console.log(a.year);
+            console.log(a.say);
+
+            var app1=new Vue({
+                el:'#wrap',
+                data:{
+                    myarr:[{orderID:'2017-04-26 32421231',name:'秋季短袖',price:'40',number:'1',status:'付款成功'}],
+                    orderID:'',
+                    name:'',
+                    price:'',
+                    number:'',
+                    status:''
+                },
+                methods:{
+                    add:function(){
+                        this.myarr.push({
+                            orderID:this.orderID,
+                            name:this.name,
+                            price:this.price,
+                            number:this.number,
+                            status:this.status
+                        });
+                    },
+                    del:function(n){
+                        this.myarr.splice(n,1);
+                    }
+                }
+            });
+
+
+        }
+    </script>
+</head>
+<body>
+        <div class="header" >
+            <nav class="navbar nav1" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">O2O自助平台</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">主页</a></li>
+                        <li><a href="personal.html">个人中心</a></li>
+                        <li><a href="#">订单界面</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                更多业务 <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">等待建设</a></li>
+                                <li><a href="#">等待建设</a></li>
+                                <li><a href="#">等待建设 </a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">等待建设</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">等待建设</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <form class="navbar-form navbar-right form1" role="search">
+                    <input type="text" class="form-control" placeholder="搜搜你想的">
+                    <button type="submit" class="btn btn-info"> <i class="fa icon-search"></i>搜索</button>
+                </form>
+
+            </nav>
+        </div>
+
+
+
+        <div class="wrap" id="wrap">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                    <div class="banner">
+                        <p>再见时光</p>
+                        <ul class="nav nav-tabs " id="nav-tabs">
+                           <li><a href="#">首页</a></li>
+                           <li><a href="#">账户相关</a></li>
+                           <li class="dropdown">
+                              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                 我的资料 <span class="caret"></span>
+                              </a>
+                              <ul class="dropdown-menu">
+                                 <li><a href="#">基础资料</a></li>
+                                 <li><a href="#">个人信息</a></li>
+                                 <li><a href="#">地址</a></li>
+                                 <li class="divider"></li>
+                                 <li><a href="#">更多</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="#">其它</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+            </div>
+
+
+            <div class="panel-body">
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#home" data-toggle="tab">
+                                所有订单
+                            </a>
+                        </li>
+                        <li><a href="#oderadd" data-toggle="tab">订单添加</a></li>
+                        <li><a href="#ios" data-toggle="tab">待付款</a></li>
+                        <li><a href="#ios" data-toggle="tab">待发货</a></li>
+                        <li><a href="#ios" data-toggle="tab">待评价</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" id="myTabDrop1" class="dropdown-toggle"
+                               data-toggle="dropdown">更多货物加载
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                                <li><a href="#jmeter" tabindex="-1" data-toggle="tab">等待建设</a></li>
+                                <li><a href="#ejb" tabindex="-1" data-toggle="tab">等待建设</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="home">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="ws">
+                                    <th>宝贝详细信息</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <div class="panel panel-default" v-for="(item,index) in myarr">
+                                <div class="panel-heading">&nbsp;&nbsp;{{item.orderID}}</div>
+                                <table class="table table-bordered ws">
+                                    <th>{{item.name}}</th>
+                                    <th>{{item.price}}</th>
+                                    <th>{{item.number}}</th>
+                                    <th>{{item.status}}</th>
+                                    <th> <button type="button" class="btn btn-warning btn-xs" @click="del(index)">删除</button> </th>
+                                </table>
+                            </div>
+
+                        </div>
+
+
+                        <div class="tab-pane fade" id="ios">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="ws">
+                                    <th>宝贝详细信息</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">&nbsp;&nbsp;2017-4-2 订单号:333181212</div>
+                                <table class="table table-bordered ws">
+                                    <th>联通话费充值卡</th>
+                                    <th>30元 </th>
+                                    <th>1</th>
+                                    <th>交易成功 </th>
+                                    <th id="dd" style="cursor: pointer">删除订单</th>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="oderadd">
+                            <form role="form " id="form-center">
+                                <div class="form-group " >
+                                    订单日期和订单号
+                                    <label for="orderID"></label>
+                                    <input type="text" id="orderID" class="pull-right" placeholder="格式 2017-4-23 3456721" v-model="orderID">
+                                </div>
+
+                                <div class="form-group">
+                                    宝贝详细信息
+                                    <label for="name"></label>
+                                    <input type="text" id="name" class="pull-right" placeholder="请输入宝贝名称" v-model="name">
+                                </div>
+
+                                <div class="form-group">
+                                    单价
+                                    <label for="price"></label>
+                                    <input type="text" id="price" class="pull-right" placeholder="单价" v-model="price">
+                                </div>
+
+                                <div class="form-group">
+                                    数量
+                                    <label for="number"></label>
+                                    <input type="text" id="number" class="pull-right" placeholder="数量" v-model="number">
+                                </div>
+
+                                <div class="form-group">
+                                    交易状态
+                                    <label for="status"></label>
+                                    <input type="text" id="status" class="pull-right" placeholder="状态" v-model="status">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-info pull-right" @click="add()">确定</button>
+                                    <button type="reset" class="btn btn-warning pull-right">重置</button>
+                                </div>
+
+                            </form>
+
+
+
+                        </div>
+
+
+                        <div class="tab-pane fade" id="jmeter">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="ws">
+                                    <th>宝贝详细信息</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">&nbsp;&nbsp;2017-4-2 订单号:333181212</div>
+                                <table class="table table-bordered ws">
+                                    <th>联通话费充值卡</th>
+                                    <th>30元 </th>
+                                    <th>1</th>
+                                    <th>交易成功 </th>
+                                    <th id="dd" style="cursor: pointer">删除订单</th>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <div class="tab-pane fade" id="ejb">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="ws">
+                                    <th>宝贝详细信息</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">&nbsp;&nbsp;2017-4-2 订单号:333181212</div>
+                                <table class="table table-bordered ws">
+                                    <th>联通话费充值卡</th>
+                                    <th>30元 </th>
+                                    <th>1</th>
+                                    <th>交易成功 </th>
+                                    <th id="dd" style="cursor: pointer">删除订单</th>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <hr>
+            武汉纺织大学电子电器工程学院
+        </div>
+
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/vue.js"></script>
+</body>
+</html>

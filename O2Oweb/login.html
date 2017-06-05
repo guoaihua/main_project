@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录界面</title>
+    <link rel="stylesheet" href="css/login.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body id="container">
+<img src="imgs/start.png" class="img-responsive" alt="Cinque Terre">
+ <div class="text">欢迎来到O2O登录界面</div>
+  <div class="wrap">
+      <div class="form_1">
+          <form class="form-horizontal" role="form" id="login_form">
+              <div class="form-group">
+                  <label for="name" class="col-sm-2 control-label">帐号</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" id="name"
+                             placeholder="请输入帐号" class="required" name="name">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="password" class="col-sm-2 control-label">密码</label>
+                  <div class="col-sm-10">
+                      <input type="password" class="form-control" id="password"
+                             placeholder="请输入密码" class="required" name="password">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                      <div class="checkbox">
+                          <label>
+                              <input type="checkbox"> 请记住我
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class=" col-sm-12">
+                      <button type="button" class="btn btn-primary " id="loginbtn">登录</button>
+                      <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#mymodal">注册</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+      </div>
+  </div>
+
+    <!--注册弹出框-->
+    <div class="modal fade" id="mymodal">
+        <div class="modal-dialog">
+        <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="text-center">欢迎来到注册界面</h2>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" id="form">
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                     用户名：<input type="text" id="loginname" required placeholder="请输入登录用户名" class="required" name="loginname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                密 &nbsp;码：<input type="password" id="loginpassword" required placeholder="请输入密码" class="required" name="loginpassword">
+                                    </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                  真实姓名：<input type="text" id="username" required placeholder="请输入姓名" class="required" name="username">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    电子邮箱：<input type="text" id="email" required placeholder="请输入邮箱" name="email">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    所在单位：<input type="text" id="place" required placeholder="请输入所在单位" name="place">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                手机号码：<input type="text" id="phonenumber" required placeholder="请输入手机号码" class="required" name="phonenumber">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="res">重置</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info" id="sub">确定</button>
+                    </div>
+        </div>
+        </div>
+    </div>
+
+<div class="footer">
+    <div class="line"></div>
+      <h6> 本站仅作为纺织服装o2o自助平台设计项目测试使用</h6>
+      <h6>阳光校区：武汉市江夏区阳光大道1号 邮政编码：430200</h6>
+      <h6> 南湖校区：武汉市洪山区纺织路1号 邮政编码：430073</h6>
+      <h6>东湖校区：武汉市武昌区东湖梨园渔光村1号 邮政编码：430077</h6>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-stars.js"></script>
+<script >
+
+    $('#container').jstars({
+        image_path: 'imgs',
+        style: 'white',
+        frequency: 50
+    });
+    $(function() {
+        /*
+        * 在必须的元素后面添加一个*
+        * 文本失去焦点后进行验证
+        *
+        */
+        var flag=0;
+        $("form :input.required").each(function() {
+            var $required = $("<strong class='high'> *</strong>"); //创建元素
+
+            $(this).parent().append($required); //然后将它追加到文档中
+
+            $(function(){
+                $("form :input").blur(function(){
+                    var $parent=$(this).parent();
+                    $parent.find(".tips").remove();
+
+                    if($(this).is('#loginname')){
+                        //名字正则验证
+                        var re=/[\w\u4e00-\u9fa5]/g;
+                        if(re.test(this.value)){
+                            $parent.find(".high").remove();
+                            $parent.append('<img src="imgs/success.png" class="tips">');
+                        }else{
+                            $parent.find(".high").remove();
+                            $parent.append('<span class="tips onError">请输入4-10字中文数字字母</span>');
+                        }
+                    }
+
+                    if($(this).is('#loginpassword')){
+                        // 密码只能为数字或者字母且大于6个字符
+                        var re=/[^\w]+/g;
+                        if(re.test(this.value)){
+                            $parent.find(".high").remove();
+                            $parent.append('<span class="tips onError">请输入数字或者字母</span>');
+                        }else{
+                            $parent.find(".high").remove();
+                            $parent.append('<img src="imgs/success.png" class="tips">');
+                        }
+                    }
+
+
+                    if($(this).is('#username')) {
+                        // 密码只能为数字或者字母且大于6个字符
+                        var re = /[\u4e00-\u9fa5]/g;
+                        if (re.test(this.value)) {
+                            $parent.find(".high").remove();
+                            $parent.append('<img src="imgs/success.png" class="tips">');
+                        } else {
+                            $parent.find(".high").remove();
+                            $parent.append('<span class="tips onError">请输入中文汉字</span>');
+                        }
+                    }
+
+                    if($(this).is('#phonenumber')) {
+                        // 密码只能为数字或者字母且大于6个字符
+                        var re = /^[1-9][0-9]{10}/g;
+                        if (re.test(this.value)) {
+                            $parent.find(".high").remove();
+                            $parent.append('<img src="imgs/success.png" class="tips">');
+                        } else {
+                            $parent.find(".high").remove();
+                            $parent.append('<span class="tips onError">请输入11位号码</span>');
+                        }
+                    }
+
+
+                });
+            });//end blur;
+
+            $("#sub").click(function(){
+                $("form :input.required").trigger('blur');  // 对表单的qequired进行验证
+                var numError=$('form .onError').length;
+                if(numError){
+                   return false; // 返回false 可以阻止默认事件
+                }
+                flag++;
+                if(flag==4){
+                    ashow(flag);
+                }
+            });
+
+
+            $("#res").click(function(){
+                $(".tips").remove();
+            });
+
+        });
+
+        });
+        // 失去焦点后进行验证
+// ajax异步注册用户
+    function ashow(flag){
+    $.ajax({
+        type:'post',
+        url:'./service/signin.php',
+        data:$('#form').serialize(),
+        async:false,
+        success:function(data){
+             alert(data);
+        }
+    });
+}
+    $('#loginbtn').click(function(){
+        $.ajax({
+            type:'post',
+            url:'./service/login.php',
+            data:$('#login_form').serialize(),
+            async:false,
+            success:function(data){
+               if(data==1){
+                   alert("登录成功，进行跳转");
+                   window.location.href="../O2Oweb/index.html";
+               }else if(data==2) {
+                   alert("密码或者用户名错误！");
+               }
+            }
+        });
+    });
+
+
+
+ /*
+ *localstorage方式废除
+ */
+
+
+ /* var db=openDatabase("mydb","1.0",1024*1024,function(){});
+    var flag=false;
+    function save(){
+        var name=document.getElementById('name').value;
+        var password=document.getElementById('password').value;
+        var phone=document.getElementById('phone').value;
+        addData(name,password,phone);
+
+    }
+    function addData(name,password,phone){
+
+        db.transaction(function(tx){
+            tx.executeSql('CREATE TABLE IF NOT EXISTS MyData(name TEXT,password TEXT,phone TEXT)',[]);
+            tx.executeSql('INSERT INTO MyData VALUES(?,?,?)',[name,password,phone],function(tx,rs){
+                alert("插入成功");
+            },function(tx,error){
+                alert(error.source+"/"+error.message);
+            });
+        });
+    }
+   function search(){
+        var cname=document.getElementById('cname').value;
+        var cpassword=document.getElementById('cpassword').value;
+      /!*  输入检测*!/
+        if(cname!=''&&cpassword!=''){
+        db.transaction(function(tx){
+            tx.executeSql('SELECT * FROM MyData',[],function(tx,rs){
+                for(var i=0;i<rs.rows.length;i++){
+                    if((rs.rows.item(i).name==cname)&&(rs.rows.item(i).password==cpassword)){
+                        alert("登录成功");
+                        window.location.href="../O2Oweb/index.html";
+                        flag=true;
+                    }
+                }
+                if (flag==false){
+                    alert("登录失败");
+                }
+            });
+        });
+        }else {
+            alert("请输入完整信息！");
+        }
+    }*/
+</script>
+</body>
+</html>
