@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/search.css">
+</head>
+<body>
+<nav class="nav navbar-inverse" role="navigation">
+    <div class="nav-header">
+        <a href="./index.html" class="navbar-brand">主页</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">元件查询</a></li>
+            <li><a href="./update.html">元件信息修改</a></li>
+            <li><a href="./add.html">元件入库管理</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="wrap">
+    <div class="col-sm-12">
+        <form id="formThree">
+            <div class="col-sm-3">
+             元件名称：<input type="text" id="name" style="width: 50%;" name="name">
+         </div>
+        <div class="col-sm-3">
+            类型：<select class="select" id="type" name="type">
+            <option value="">请选择</option>
+            <option value="1">小型</option>
+            <option value="2">中型</option>
+            <option value="3">大型</option>
+            <option value="4">贵重</option>
+        </select>
+        </div>
+        <div class="col-sm-4">
+            价格范围：<input type="number" style="width: 30%" name="pirce1">-<input type="number" style="width: 30%;" name="pirce2">
+        </div>
+        </form>
+        <div class="col-sm-2">
+            <button class="btn btn-success btn-xs" id="search">搜索</button>
+        </div>
+
+    </div>
+    <div class="col-md-12 ">
+        <div class="panel panel-success">
+            <div class="panel-body">
+                <table class="table table-striped" id="showt">
+                    <tr>
+                        <td>编号</td>
+                        <td>名称</td>
+                        <td>类型</td>
+                        <td>价格</td>
+                        <td>数量</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </div>
+</div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script >
+    $(function(){
+        $("#search").click(function(){
+            var i=0;
+            $("#formThree input").each(function(){
+                var vl=$(this).val();
+                if(vl==''){
+                    i++;
+                    console.log(i);
+                }
+            });
+            if($("#type").val()==''&&i==3){
+                alert("请至少选择一个删选条件");
+            }else{
+                $.ajax({
+                    type:'POST',
+                    url:'../server/search.php',
+                    datatype:'json',
+                    data:$("#formThree").serialize(),
+                    success:function(data){
+                        var str=JSON.parse(data);
+                        var reshtml='<tr><th>编号</th> <th>名称</th> <th>类型</th> <th>价格</th> <th>数量</th> </tr>';
+                        $.each(str,function(index,content){
+                            reshtml+='<tr><td>'+content.id+'</td><td>'+content.name+'</td><td>'+content.type+'</td><td>'+content.pirce+'</td><td>'+content.number+'</td></tr>';
+                        });
+                        $('#showt').html(
+                                reshtml
+                        );
+                    }
+                });
+            }
+
+
+        });
+    });
+
+
+
+</script>
+</body>
+</html>

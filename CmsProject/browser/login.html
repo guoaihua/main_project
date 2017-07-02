@@ -16,9 +16,26 @@
             <i class="fa fa-key fa-2x"></i>
             <input type="password" name="password">
             <span></span>
-            <button class="regist">regist</button>
-            <button class="login">login</button>
+            <button class="regist" id="registBtn">regist</button>
+            <button class="login" id="loginBtn">login</button>
         </form>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script >
+            $(function(){
+                $("#loginBtn").click(function(){
+                    $.ajax({
+                        type:'POST',
+                        url:'../server/check.php',
+                        data:$("#formOne").serialize(),
+                        success: function (data) {
+                            alert(data);
+                        }
+                    });
+                });
+            });
+    </script>
+
 </body>
 </html>

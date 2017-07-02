@@ -40,7 +40,7 @@ function getData(p){
             });
             $('#showt').html(
                 reshtml
-            )
+            );
         }
     });
 }

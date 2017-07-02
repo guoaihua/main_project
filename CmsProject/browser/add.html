@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/add.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="nav navbar-inverse" role="navigation">
+    <div class="nav-header">
+        <a href="./index.html" class="navbar-brand">主页</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="./search.html">元件查询</a></li>
+            <li><a href="./update.html">元件信息修改</a></li>
+            <li><a href="#">元件入库管理</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="wrap">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h6>添加元件</h6>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role='form' id="formTwo">
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">元件名称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="name" class="form-control" placeholder="请输入文字" name="name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="type" class="col-md-3 control-label">元件类型</label>
+                                <div class="col-md-9">
+                                    <select class="form-control" id="type" name="type">
+                                        <option value="1">小型</option>
+                                        <option value="2">中型</option>
+                                        <option value="3">大型</option>
+                                        <option value="4">贵重</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pirce" class="col-md-3 control-label">元件价格</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="pirce" class="form-control" placeholder="请输入价格" name="pirce">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="number" class="col-md-3 control-label">元件数量</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="number" class="form-control" placeholder="请输入价格" name="number">
+                                </div>
+                            </div>
+                            <input type="button" value='提交' class="btn btn-success pull-right" id="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<script >
+    $(function(){
+         $("#submit").click(function(){
+             $.ajax({
+                 type:'POST',
+                 url:'../server/add.php',
+                 data:$("#formTwo").serialize(),
+                 async:true,
+                 success:function(data){
+                       alert(data);
+                 }
+             });
+         });
+    });
+</script>
+
+</body>
+</html>
