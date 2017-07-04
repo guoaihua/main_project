@@ -5,14 +5,15 @@ $(function () {
     $.ajax({
         type:'POST',
         url:'../server/sessionCheck.php',
-        datatype:'text',
         async:false,
         success:function(data){
-            if(data==1){
-                console.log("已登录");
-            }else if(data==2){
+            if(data==2){
                 alert("请先登录！");
                 location.href="./login.html";
+            }else{
+                console.log(data);
+                var sessionName=data;
+                $("#showSession").html("欢迎你！"+sessionName);
             }
         }
     });

@@ -31,8 +31,8 @@ function getData(p){
         data:p,
         datatype:'json',
         success:function(data){
-        	console.log(data);
-        	console.log("ceshi1");
+        	/*console.log(data);*/
+        /*	console.log("ceshi");*/
     		   var str=JSON.parse(data);
             var reshtml='<tr><th>编号</th> <th>名称</th> <th>类型</th> <th>价格</th> <th>数量</th> </tr>';
             $.each(str,function(index,content){

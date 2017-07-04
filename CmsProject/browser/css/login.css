@@ -1,3 +1,6 @@
+*{
+    margin: 0;
+}
 body {
     background-image: url(../imgs/bg.jpg);
     height: auto;
@@ -28,7 +31,8 @@ span {
     display: block;
   height: 2em;
     line-height: 2em;
-    width: 31%;
+    width: 35%;
+    margin-left: 30%;
 }
 
 .login{
@@ -68,4 +72,10 @@ span {
 .fa-qq {
     top: 165px;
     left: 145px;
+}
+
+.welcomText {
+    margin-bottom: 5%;
+    margin-left: 26%;
+    font-size: 20px;
 }

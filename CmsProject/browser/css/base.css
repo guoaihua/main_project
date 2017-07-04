@@ -10,3 +10,8 @@ body {
     background: url("../imgs/bg2.png") -220px 0px no-repeat;
     height: auto;
 }
+.session {
+    padding-top: 15px;
+    padding-right: 10px;
+    color: #9d9d9d;
+}

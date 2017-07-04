@@ -22,6 +22,10 @@
             <li><a href="./update.html">元件信息修改</a></li>
             <li><a href="#">元件入库管理</a></li>
         </ul>
+        <ul class="nav navbar-nav pull-right session">
+            <span id="showSession"></span>
+            <button type="button" class="btn btn-success btn-xs pull-right" id="cancel">注销</button>
+        </ul>
     </div>
 </nav>
 <div class="wrap">
@@ -36,7 +40,7 @@
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">元件名称</label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="name" class="form-control" placeholder="请输入文字" name="name">
+                                    <input type="text" id="name" class="form-control" placeholder="请输入文字" name="name" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -71,19 +75,33 @@
 </div>
 <script >
     $(function(){
-         $("#submit").click(function(){
-             $.ajax({
-                 type:'POST',
-                 url:'../server/add.php',
-                 data:$("#formTwo").serialize(),
-                 async:true,
-                 success:function(data){
-                       alert(data);
-                 }
-             });
+
+        $("#submit").click(function(){
+            var i=0;
+         $("#formTwo :input").each(function(){
+             var vl=$(this).val();
+             if(vl==''){
+                 i++;
+             }
          });
+
+        if(i==0){
+                $.ajax({
+                    type:'POST',
+                    url:'../server/add.php',
+                    data:$("#formTwo").serialize(),
+                    async:true,
+                    success:function(data){
+                        alert(data);
+                    }
+                });
+        }else {
+            alert("还有"+i+"处未填写！");
+        }
+        });
+
     });
 </script>
-
+<script src="js/cancel.js"></script>
 </body>
 </html>
