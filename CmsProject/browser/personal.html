@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>个人中心</title>
     <script src="js/jquery.min.js"></script>
-    <script src="js/checkSession.js"></script>
+    <script src="js/checkSession.js?v=1.0"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/personal.css">
 </head>
 <body>
 <nav class="nav navbar-inverse" role="navigation">
@@ -24,12 +25,105 @@
             <span id="showSession"></span>
             <button type="button" class="btn btn-success btn-xs pull-right" id="cancel">注销</button>
         </ul>
-
-
-
     </div>
 </nav>
+<div class="wrap">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h6 class="text-center">个人信息面板</h6>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role='form' id="formSix">
+                        <div class="form-group">
+                           <label class="col-md-3 control-label">编号</label>
+                            <div class="col-md-5 col-md-offset-1">
+                                <p id="id"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-md-3 control-label">姓名</label>
+                            <div class="col-md-5 col-md-offset-1">
+                                <span id="name"></span>
+                                <input type="text" id="type" class="form-control hidden" placeholder="请输入姓名" name="name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ps" class="col-md-3 control-label">密码</label>
+                            <div class="col-md-5 col-md-offset-1">
+                                <span id="password"></span>
+                                <input type="text" id="ps" class="form-control hidden" placeholder="请输入密码" name="password" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pirce" class="col-md-3 control-label">qq</label>
+                            <div class="col-md-5 col-md-offset-1">
+                                <span id="qq"></span>
+                                <input type="text" id="pirce" class="form-control hidden" placeholder="请输入qq" name="qq">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="number" class="col-md-3 control-label">电话</label>
+                            <div class="col-md-5 col-md-offset-1">
+                                <span id="phone"></span>
+                                <input type="text" id="number" class="form-control hidden" placeholder="请输入电话" name="phone">
+                            </div>
+                        </div>
+
+                    </form>
+                    <input type="button" value='提交' class="btn btn-info pull-right" id="subBtn">
+                    <input type="button" value='修改' class="btn btn-success pull-right" id="changeBtn">
+                    <input type="button" value='取消' class="btn btn-danger pull-right" id="cancelBtn">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/cancel.js"></script>
+<script >
+    $(function(){
+        var data={
+            name:sessionName
+        };
+        console.log(data.name);
+       $.ajax({
+            type:'POST',
+            url:'../server/personal.php',
+            data:data,
+            success: function (data) {
+                var str=JSON.parse(data);
+                console.log(str[0]);
+                console.log(str[0].id);
+                $("#id").html(str[0].id);
+                $("#name").html(str[0].name);
+                $("#qq").html(str[0].qq);
+                $("#phone").html(str[0].phone);
+                $("#password").html(str[0].password);
+            }
+
+        });
+        
+        $("#changeBtn").click(function () {
+            $("#formSix :input").removeClass("hidden");
+            $("#formSix span").addClass("hidden");
+        });
+        $("#cancelBtn").click(function () {
+            $("#formSix :input").addClass("hidden");
+            $("#formSix span").removeClass("hidden");
+        });
+        $("#subBtn").click(function () {
+            $.ajax({
+                type:'POST',
+                url:'../server/change.php',
+                data:$("#formSix").serialize(),
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

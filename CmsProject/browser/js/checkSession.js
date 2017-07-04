@@ -12,7 +12,7 @@ $(function () {
                 location.href="./login.html";
             }else{
                 console.log(data);
-                var sessionName=data;
+                sessionName=data;
                 $("#showSession").html("欢迎你！"+sessionName);
             }
         }
