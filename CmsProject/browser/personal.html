@@ -96,6 +96,7 @@
                 var str=JSON.parse(data);
                 console.log(str[0]);
                 console.log(str[0].id);
+                id=str[0].id;
                 $("#id").html(str[0].id);
                 $("#name").html(str[0].name);
                 $("#qq").html(str[0].qq);
@@ -114,12 +115,26 @@
             $("#formSix span").removeClass("hidden");
         });
         $("#subBtn").click(function () {
+            var data1={
+                id:id
+            };
+
+
+       var data2=$("#formSix").serialize()+"&id="+data1.id;
+
             $.ajax({
                 type:'POST',
                 url:'../server/change.php',
-                data:$("#formSix").serialize(),
+                data:data2,
                 success: function (data) {
                     alert(data);
+                    $.ajax({
+                        type:'POST',
+                        url:'../server/cancel.php',
+                        success: function (data) {
+                            alert("用户信息变更，请重新登录");
+                        }
+                    });
                 }
             });
         });

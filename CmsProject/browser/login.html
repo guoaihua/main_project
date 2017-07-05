@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>登陆界面</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login.css?v=121">
     <link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
 <body>
-    <div class="center">
+    <div class="center" style="padding-top: 10%">
+        <p class="welcomText">欢迎登录实验室元件管理系统</p>
         <form  id="formOne" class="formOne">
             <i class="fa fa-2x fa-user"></i>
-            <input type="text" name="user">
+            <input type="text" name="user" required value=" ">
             <span></span>
             <i class="fa fa-key fa-2x"></i>
-            <input type="password" name="password">
+            <input type="password" name="password" value="">
             <span></span>
-            <button class="regist" id="registBtn">regist</button>
-            <button class="login" id="loginBtn">login</button>
         </form>
+        <button class="regist" id="registBtn">regist</button>
+        <button class="login" id="loginBtn">login</button>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -29,10 +29,19 @@
                         type:'POST',
                         url:'../server/check.php',
                         data:$("#formOne").serialize(),
+                        datatype:'text',
                         success: function (data) {
-                            alert(data);
+                           if(data==1){
+                               alert("登录成功，进行跳转");
+                               location.href="./index.html";
+                           }else{
+                               alert("验证失败，请先注册！");
+                           }
                         }
                     });
+                });
+                $("#registBtn").click(function(){
+                    location.href="./regist.html";
                 });
             });
     </script>

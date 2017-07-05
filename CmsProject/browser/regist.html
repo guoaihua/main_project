@@ -3,28 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
-    <link rel="stylesheet" href="css/base.css">
+
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/formCheck.js?v=21"></script>
 </head>
 <body>
 <div class="center" style="padding-top: 8%">
     <form  id="formOne" class="formOne">
         <i class="fa fa-2x fa-user"></i>
-        <input type="text" name="user">
-        <span></span>
+        <input type="text" name="name" id="user" value=" ">
+        <span id="span_user"></span>
         <i class="fa fa-key fa-2x"></i>
-        <input type="password" name="password">
-        <span></span>
+        <input type="password" name="password" id="password" value="">
+        <span id="span_password" ></span>
         <i class="fa fa-2x fa-qq"></i>
-        <input type="number" name="qq">
-        <span></span>
+        <input type="number" name="qq" id="qq">
+        <span id="span_qq" ></span>
         <i class="fa fa-3x fa-mobile"></i>
-        <input type="number" name="mobile">
-        <span></span>
-        <button type="button" class="regist">cancel</button>
-        <button type="button" class="login">confirm</button>
+        <input type="number" name="mobile" id="phoneNum">
+        <span id="span_phoneNum"></span>
     </form>
+    <button type="button" class="regist" id="backBtn">cancel</button>
+    <button type="button" class="login" id="subBtn">confirm</button>
 </div>
+<script >
+    var flag=false;
+    $(function(){
+
+        $("#backBtn").click(function(){
+            location.href="./login.html";
+        });
+
+
+        $("#subBtn").click(function(){
+            if(flag==false){
+                alert("请将信息填写完整!");
+            }else if(flag==true){
+                $.ajax({
+                    type:'POST',
+                    url:'../server/regist.php',
+                    data:$("#formOne").serialize(),
+                    datatype:'text',
+                    success: function (data) {
+                        if(data==1){
+                            alert("注册成功，请登录");
+                            location.href="./login.html";
+                        }else if(data==2){
+                            alert("信息有误，请重新输入");
+                        }
+                    }
+                });
+            }
+
+        });
+    });
+
+</script>
 </body>
 </html>

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/search.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/checkSession.js"></script>
 </head>
 <body>
 <nav class="nav navbar-inverse" role="navigation">
@@ -17,6 +19,11 @@
             <li><a href="#">元件查询</a></li>
             <li><a href="./update.html">元件信息修改</a></li>
             <li><a href="./add.html">元件入库管理</a></li>
+            <li><a href="./personal.html">个人中心</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right session">
+            <span id="showSession"></span>
+            <button type="button" class="btn btn-success btn-xs pull-right" id="cancel">注销</button>
         </ul>
     </div>
 </nav>
@@ -62,8 +69,9 @@
 </div>
 
 
-<script src="js/jquery.min.js"></script>
+
 <script src="js/bootstrap.min.js"></script>
+<script src="js/cancel.js"></script>
 <script >
     $(function(){
         $("#search").click(function(){
