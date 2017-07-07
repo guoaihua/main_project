@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片预加载</title>
+    <script src="../jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0 auto;
+        }
+        html,body {
+            width: 100%;
+            height: 100%;
+        }
+        .box {
+            width:80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+       .btn {
+            display: inline-block;
+           height: 30px;
+           border: 1px solid black;
+           padding: 0 10px;
+           margin-right: 100px;
+           color: #00CC00;
+
+        }
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #eeeeee;
+                text-align: center;
+        }
+        .process {
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../imgs/1.jpg" alt="pic" id="img" />
+        <p><a href="javascript:;" class="btn" data-control="prev">上一页</a>
+          <a href="javascript:;" class="btn" data-control="next">下一页</a>
+        </p>
+    </div>
+
+    <div class="loading">
+        <p class="process">0%</p>
+    </div>
+<script >
+    /*
+    *流程
+    * 1、遍历图片数组，并创建图片对象
+    * 2.创建完毕之后，跟当前图片对象绑定一个load事件，全部加载完毕则执行回调函数，改变process的html值
+    * 3。将数组中的src赋值给图片对象的src
+    */
+        var imgs=[
+            '../imgs/1.jpg',
+            'http://img.hb.aicdn.com/5f73ec530873c34875bc16add7de27997a76d00328dba-tMmcki_fw658',
+            'http://img.hb.aicdn.com/9ede988642a54bb6fe76849cc2d0a1f5fd6ec0f61b98a-9GDjdY_fw658',
+            'http://img.hb.aicdn.com/b9b8124a808a2e5060f788b8a8920785334e5acad8cc-2TtpI2_fw658',
+            '../imgs/5.jpg',
+            '../imgs/6.jpg',
+            '../imgs/7.jpg'
+        ];
+        var index= 0,
+        len=imgs.length,
+                count= 0,
+                $process=$('.process');       // 获取元素并赋值给jquery变量
+
+        $.each(imgs, function (i,src) {         //  each遍历 集合imgs 为索引，src为遍历的item值
+            console.log(i+src);
+            var imgobj=new Image();             // 创建img对象
+            $(imgobj).on('load error', function () {   // 将dom对像转换为jquery对象，并绑定load事件，加载完毕则执行回调函数
+                $process.html(Math.round(count+1)/len*100+'%');
+                if(count>=len-1){
+                    $('.loading').hide();
+                    document.title='1/'+len;
+                }
+                count++;
+            });
+            imgobj.src=src;                  // 给img对象的src赋值
+            console.log(imgobj);
+        });
+
+    /*
+     *点击之后先判断 data——control自定义属性的值是那一个
+     * 确定是前一页还是后一页
+     * 之后对当前index的值和0或者最大长度比较
+     * 最后让img的src等与当前索引对应的imgs数组中的值
+     */
+    $('.btn').click(function () {
+        if($(this).data('control')==='prev'){   // 前一页
+              index=Math.max(0,--index);
+        }else{   //下一张
+            index=Math.min(len-1,++index);
+        }
+        document.title=(index+1)+'/'+len;
+        $('#img').attr('src',imgs[index]);
+    });
+</script>
+</body>
+</html>
