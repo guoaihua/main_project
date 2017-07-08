@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>图片预加载</title>
     <script src="../jquery.min.js"></script>
+    <script src="perload.js"></script>
     <style>
         *{
             margin: 0 auto;
@@ -73,10 +74,19 @@
         ];
         var index= 0,
         len=imgs.length,
-                count= 0,
                 $process=$('.process');       // 获取元素并赋值给jquery变量
 
-        $.each(imgs, function (i,src) {         //  each遍历 集合imgs 为索引，src为遍历的item值
+    $.preload(imgs,{
+        each: function (count) {
+            $process.html(Math.round(count+1)/len*100+'%');
+        },
+        all: function () {
+            $('.loading').hide();
+            document.title='1/'+len;
+        }
+    });
+
+/*        $.each(imgs, function (i,src) {         //  each遍历 集合imgs 为索引，src为遍历的item值
             console.log(i+src);
             var imgobj=new Image();             // 创建img对象
             $(imgobj).on('load error', function () {   // 将dom对像转换为jquery对象，并绑定load事件，加载完毕则执行回调函数
@@ -89,7 +99,7 @@
             });
             imgobj.src=src;                  // 给img对象的src赋值
             console.log(imgobj);
-        });
+        });*/
 
     /*
      *点击之后先判断 data——control自定义属性的值是那一个
