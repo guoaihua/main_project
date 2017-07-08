@@ -13,6 +13,10 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.xml
+*.iml
+O2Oweb/Font-Awesome
+ÍøÒ³ÏîÄ¿/Font-Awesome
 
 # Windows shortcuts
 *.lnk
