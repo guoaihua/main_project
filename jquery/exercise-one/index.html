@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试一些小功能</title>
+    <script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+    <style>
+        .one {
+            width: 200px;
+            height: 100px;
+            background-color: #c3b8f4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="one">
+    </div>
+ <button>点击隐藏显示切换</button>
+
+    <script  type="text/javascript">
+        $("button").click(function(){
+            $(".one").toggle(3000)
+        });
+    </script>
+</body>
+</html>
