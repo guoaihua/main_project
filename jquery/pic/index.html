@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+    <script type="text/javascript" >
+        $.ajax({
+            type:'get',
+            url:'http://api.douban.com/v2/movie/top250?start=0&count=25',
+            dataType:'jsonp',
+            jsonp:'callback',
+            success: function (data) {
+                data=data.subjects;
+                console.log(data);
+                formdata(data)
+            }
+        });
+
+        function formdata(data){
+            var arr=[];
+            data.forEach(function(item,index){
+                arr.push({item:item.title,image:item.images.medium});
+            })
+            console.log(arr);
+           var len=arr.length;
+            for(var i=0;i<len;i++){
+                var img=document.createElement('img');
+                img.src=arr[i].image;
+                var title=document.createElement('span');
+                title.innerHTML=arr[i].item;
+                $(".container").append(img).append(title);
+            }
+        }
+    </script>
+</body>
+</html>
