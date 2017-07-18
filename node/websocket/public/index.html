@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网络聊天室</title>
+	<style>
+		*{
+			margin: 0;
+		}
+
+		.wrap{
+			width: 1200px;
+			margin: 0 auto;	
+			text-align: center;
+		}
+		.recMs{
+			width: 400px;
+			height: 200px;
+			border: 1px solid black;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="recMs">
+		</div>
+				<input type="text" id="name">
+		<button id="sendName">输入昵称</button>
+		<input type="text" id="ms">
+		<button id="sendBtn">
+		SEND</button>
+
+	</div>
+	<script src='javascripts/jquery.min.js'></script>
+	<script src='/socket.io/socket.io.js'></script>
+	<script>
+		var html='',
+		name='',
+	  	 socket=io.connect(),
+		button=document.getElementById('sendBtn'),
+		sendName=document.getElementById('sendName');
+
+		sendName.onclick=function(){
+		 	 name=$('#name').val();
+		   console.log(name);
+		   socket.emit('login',name);
+		};
+
+		//监听接受到的消息并输入到客户端窗口
+		socket.on("message",function (data) {
+			console.log(data);
+			html+='<p>'+data+'</p>';
+			$('.recMs').html(html);	
+		});
+
+		// 点击发送一个消息
+		button.onclick=function () {
+			let str=name+':'+$('#ms').val();
+			console.log(str);
+			socket.send(str);
+		};
+	</script>
+</body>
+</html>
