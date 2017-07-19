@@ -8,9 +8,8 @@ module.exports=function () {
 var DataSchema=new mongoose.Schema({
 	name:{type:String},
 	content:{type:String},
-	time:{type:Date,default:Date.now}
+	time:{type:String,default:Date.now}
 });
-	// mongoose发布data模版
 	mongoose.model('data',DataSchema);
 	return db;
 }

@@ -2,37 +2,36 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<title>网络聊天室</title>
-	<style>
-		*{
-			margin: 0;
-		}
+	<link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="./stylesheets/style.css">
 
-		.wrap{
-			width: 1200px;
-			margin: 0 auto;	
-			text-align: center;
-		}
-		.recMs{
-			width: 400px;
-			height: 200px;
-			border: 1px solid black;
-			margin-left: auto;
-			margin-right: auto;
-		}
-	</style>
 </head>
 <body>
 	<div class="wrap">
 		<div class="recMs">
 		</div>
-				<input type="text" id="name">
-		<button id="sendName">输入昵称</button>
-		<input type="text" id="ms">
-		<button id="sendBtn">
-		SEND</button>
+		<div class="panel panel-info" id="showContent">
+			<div class="panel-heading">
+				<h3>欢迎来到子明聊天室</h3>
+			</div>
+			<div class="panel-body" id="showMsg">
 
+			</div>
+		</div>
+		<div class="control">
+				<textarea id="ms" cols="30" rows="5"></textarea>
+				<button class="btn btn-info btn-sm" id="sendBtn">发<br> 送</button>
+		</div>
 	</div>
+		<div class="model">
+			<div class="name">
+				<p>正在连接服务器...请输入昵称</p>
+				<input type="text" id="name" required>
+				<button id="sendName" class="btn btn-info btn-sm">昵称</button> 
+			</div>
+		</div>
 	<script src='javascripts/jquery.min.js'></script>
 	<script src='/socket.io/socket.io.js'></script>
 	<script>
@@ -42,9 +41,12 @@
 		button=document.getElementById('sendBtn'),
 		sendName=document.getElementById('sendName');
 
+		
+
 		sendName.onclick=function(){
-		 	 name=$('#name').val();
-		   console.log(name);
+			$('.model').hide();
+		  name=$('#name').val();
+		/*   console.log(name);*/
 		   socket.emit('login',name);
 		};
 
@@ -57,19 +59,21 @@
 				console.log(111);
 				let arr=data.reverse();
 				arr.forEach(function(item,index){
-				html+='<p>'+item.name+':'+item.content+'   '+item.time+'</p>';
+				html+='<p>'+item.name+':'+item.content+' ('+item.time+')'+'</p>';
 			});
 			}else{
 				html+='<p>'+data+'</p>';
 			}
-			
-			$('.recMs').html(html);	
+			$('#showMsg').scrollTop($('#showMsg')[0].scrollHeight);
+			$('#showMsg').html(html);	
 		});
 
 		// 点击发送一个消息
 		button.onclick=function () {
-			let str=name+':'+$('#ms').val();
-			console.log(str);
+			let str=name+':'+$('#ms').val();	
+			$('#ms').val('');
+
+		/*	console.log(str);*/
 			socket.send(str);
 		};
 	</script>

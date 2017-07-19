@@ -1,8 +1,85 @@
+
+body,html{
+	width: 100%;
+	height: 100%;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ margin: 0;
+  font: 16px "宋体", Helvetica, Arial, sans-serif;
+
 }
 
-a {
-  color: #00B7FF;
+.wrap {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+#showContent {
+	width: 80%;
+	height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#showMsg {
+	overflow-y: auto;
+	width: 100%;
+	height: 82%;
+/* 	background-image: url('../images/bg3.jpg'); */
+}
+
+.control {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#ms{
+	width: 890px;
+	padding: 20px;
+	height: 86px;
+	border: 1px solid skyblue;
+	resize: none;
+	overflow-y:auto; 
+}
+
+#sendBtn {
+	display: inline-block;
+	width: 60px;
+	height: 86px;
+	margin-top: -80px;
+	font-size: 16px;
+}
+
+.name {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	height: 29px;
+}
+
+#name {
+	height: 29px;
+	color: white;
+	background-color: black;
+	border: 1px solid skyblue;
+	padding-left: 10px;
+}
+.model {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.5;
+	color: white;
+/*     -webkit-filter: blur(10px); Chrome, Opera
+  	-moz-filter: blur(10px);
+	-ms-filter: blur(10px);    
+filter: blur(10px); */
+
 }

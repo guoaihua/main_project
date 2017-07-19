@@ -15,6 +15,7 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
     "mongoose": "^4.11.3",
     "socket.io": "^2.0.3"

@@ -23,37 +23,42 @@ io.on('connect',function(socket){
 			// 监听客户端连接
 			socket.on('login',function (name) {
 				io.send('客户端接入，欢迎：'+name);
+				var query=DataModel.find({});
+				query.sort({'time':-1}).limit(5);
+				query.exec(function(err,doc){
+/*						console.log(doc);
+						console.log(doc[0]);*/
+						socket.emit('message',doc);
+						});
 			});		
 
 			//将用户信息存入数据库
 			socket.on('message',function (data) {
-				console.log(data);
+				/*console.log(data);*/
 				let arr=data.split(':');
 				let name1=arr[0];
-				console.log(name1);
-				let content1=arr[1];
-				console.log(content1);
+				let content1=arr[1];	
+				let time=new Date();			
 				var DataEntity=new DataModel({
 					name:name1,
-					content:content1
+					content:content1,
+					time:time.toLocaleString()
 				});
+				console.log(time);
 				DataEntity.save(function(err,doc){
 					if(err){
 						console.log(err);
 					}else{
 					/*	console.log('success'+doc);*/
 					var query=DataModel.find({});
-					query.sort({'time':-1}).limit(8);
+					query.sort({'time':-1}).limit(1);
 					query.exec(function(err,doc){
-						console.log(doc);
-
-						console.log(doc[0]);
+/*						console.log(doc);
+						console.log(doc[0]);*/
 						io.sockets.emit('message',doc);
-				})
+						});
 					}
 				});
-
-
 				
 			});
 	});
