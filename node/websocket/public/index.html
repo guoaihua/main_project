@@ -50,8 +50,19 @@
 
 		//监听接受到的消息并输入到客户端窗口
 		socket.on("message",function (data) {
-			console.log(data);
-			html+='<p>'+data+'</p>';
+			console.log(typeof data);
+			console.log(data instanceof Array);
+			console.log(data instanceof Object);
+			if(typeof data=='object'){
+				console.log(111);
+				let arr=data.reverse();
+				arr.forEach(function(item,index){
+				html+='<p>'+item.name+':'+item.content+'   '+item.time+'</p>';
+			});
+			}else{
+				html+='<p>'+data+'</p>';
+			}
+			
 			$('.recMs').html(html);	
 		});
 
