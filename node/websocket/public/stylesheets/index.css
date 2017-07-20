@@ -1,0 +1,103 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	font-size: 1.6rem;
+	font-family: "宋体"；
+}
+
+
+/* 外部容器控制 */
+.container{
+	margin-top: 3%;
+	height: 100%;
+}
+.col1 {
+	height: 70%;
+}
+
+.col2 {
+	height: 100%;
+}
+
+.co1 {
+	height: 10%;
+	margin-top: 1%;
+}
+
+
+.co2,.co3{
+	padding-right: 0;
+	height: 100%;
+}
+
+#ms {
+	height: 100%;
+	width: 100%;
+	margin-left: -15px;
+	resize: none;
+	font-size: 0.8rem;
+	font-family: "宋体";
+	border: 1px solid skyblue;
+	padding:0;
+	padding-left: 2%;
+}
+
+#sendBtn {
+	height: 100%;
+	width: 100%;
+}
+
+#showMsg {
+	font-family: '宋体';
+	font-size: 1rem;
+	overflow-y:auto; 
+	height: 80%;
+}
+
+/*覆盖框 */
+
+.model {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.47);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	color: white;
+	display: none; 
+}
+
+.name {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	height: 20%;
+	text-align: center;
+	width: 100%;
+}
+
+#name {
+	width: 60%;
+	height: 20%;
+	border: 1px solid skyblue;
+	font-size: 0.9rem;
+	background-color: rgba(118, 208, 231, 0.63);
+	  padding-left: 2%;
+    font-size: 0.8rem;
+    font-family: "宋体";
+    outline: none;
+    padding: 5%;
+}
+
+#sendName {
+	display: inline-block;
+	margin-top: 2%;
+	cursor: pointer;
+}
+
+.co4 {
+	height: 100%;
+}
+

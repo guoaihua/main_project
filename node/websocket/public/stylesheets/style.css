@@ -5,19 +5,20 @@ body,html{
 }
 body {
  margin: 0;
-  font: 16px "宋体", Helvetica, Arial, sans-serif;
+  font: 16rem "宋体", Helvetica, Arial, sans-serif;
 
 }
 
 .wrap {
-	width: 1200px;
+	width: 80%;
+	height: 100%;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 1%;
 }
 
 #showContent {
 	width: 80%;
-	height: 500px;
+	height: 65%;
 	margin-left: auto;
 	margin-right: auto;
 	
@@ -32,27 +33,43 @@ body {
 
 .control {
 	width: 80%;
+	height: 20%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: -2%;
 }
 
 #ms{
-	width: 890px;
-	padding: 20px;
-	height: 86px;
+	width: 90%;
+	padding: 2%;
+	height: 80%;
 	border: 1px solid skyblue;
 	resize: none;
-	overflow-y:auto; 
+	overflow-y:auto;
+	font-size: 1.6rem; 
 }
 
+
+}  
 #sendBtn {
 	display: inline-block;
-	width: 60px;
-	height: 86px;
-	margin-top: -80px;
-	font-size: 16px;
+	width: 8%;
+	height: 80%;
+	margin-top: -4%;
+	font-size: 2rem;
+	margin-left: -7.3%;
 }
 
+
+@media screen and (max-device-width: 500px) { 
+	.control {
+		width: 60%;
+		height: 20%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -2%;
+	}
+}
 .name {
 	position: absolute;
 	top: 50%;
@@ -77,6 +94,7 @@ body {
 	background-color: black;
 	opacity: 0.5;
 	color: white;
+	display: none;
 /*     -webkit-filter: blur(10px); Chrome, Opera
   	-moz-filter: blur(10px);
 	-ms-filter: blur(10px);    

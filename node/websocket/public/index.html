@@ -5,31 +5,44 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<title>网络聊天室</title>
 	<link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
-	<link rel="stylesheet" href="./stylesheets/style.css">
-
+	<link rel="stylesheet" href="./stylesheets/index.css"> 
+	<script src='./javascripts/jquery.min.js'></script>
+	<script src='./javascripts/bootstrap.min.js'></script>
 </head>
 <body>
-	<div class="wrap">
-		<div class="recMs">
-		</div>
-		<div class="panel panel-info" id="showContent">
-			<div class="panel-heading">
-				<h3>欢迎来到子明聊天室</h3>
-			</div>
-			<div class="panel-body" id="showMsg">
+		<div class="container">
+			<div class="col-xs-10 col-xs-offset-1 col1">
+				  <div class="panel panel-info col2">
+						<div class="panel-heading">
+								<h4>欢迎来到子明聊天室，在线人数(<span id="num">0</span>)</h4>
+						</div>			
+						<div class="panel-body" id="showMsg">
 
+						</div>
+				  </div>
+			</div>
+
+			<div class="col-xs-10 col-xs-offset-1 co1">
+					<div class="col-xs-9 co2">
+						<textarea  id="ms"></textarea>
+					</div>
+					<div class="col-xs-3 co3">
+						<button id="sendBtn" class="btn btn-info btn-sm">发送</button>
+					</div>
 			</div>
 		</div>
-		<div class="control">
-				<textarea id="ms" cols="30" rows="5"></textarea>
-				<button class="btn btn-info btn-sm" id="sendBtn">发<br> 送</button>
-		</div>
-	</div>
+
 		<div class="model">
 			<div class="name">
-				<p>正在连接服务器...请输入昵称</p>
-				<input type="text" id="name" required>
-				<button id="sendName" class="btn btn-info btn-sm">昵称</button> 
+				<div class="container">
+					<div class="col-xs-12 co4 col-md-8 col-md-offset-2">
+					<h4>正在连接服务器...请输入一个昵称</h4>
+					<div class="col-xs-12 co4 col-md-4 col-md-offset-4" >
+						<input type="text" id="name" >
+						<button id="sendName" class="btn btn-info btn-sm">确认</button> 
+					</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	<script src='javascripts/jquery.min.js'></script>
@@ -37,12 +50,14 @@
 	<script>
 		var html='',
 		name='',
+		count=0,
 	  	 socket=io.connect(),
 		button=document.getElementById('sendBtn'),
 		sendName=document.getElementById('sendName');
 
-		
-
+		window.onbeforeunload=function () {
+			socket.end();
+		}
 		sendName.onclick=function(){
 			$('.model').hide();
 		  name=$('#name').val();
@@ -52,27 +67,37 @@
 
 		//监听接受到的消息并输入到客户端窗口
 		socket.on("message",function (data) {
-			console.log(typeof data);
+/*			console.log(typeof data);
 			console.log(data instanceof Array);
-			console.log(data instanceof Object);
+			console.log(data instanceof Object);*/
 			if(typeof data=='object'){
-				console.log(111);
 				let arr=data.reverse();
 				arr.forEach(function(item,index){
 				html+='<p>'+item.name+':'+item.content+' ('+item.time+')'+'</p>';
 			});
 			}else{
 				html+='<p>'+data+'</p>';
+
 			}
-			$('#showMsg').scrollTop($('#showMsg')[0].scrollHeight);
 			$('#showMsg').html(html);	
+			$('#showMsg').scrollTop($('#showMsg')[0].scrollHeight);
+		});
+
+		socket.on("disc",function (data) {
+			html+='<p>'+data+'</p>';
+			$('#showMsg').html(html);	
+			$('#showMsg').scrollTop($('#showMsg')[0].scrollHeight);
+		});
+
+		socket.on("count",function (data) {
+			console.log(data);
+			$('#num').text(data);
 		});
 
 		// 点击发送一个消息
 		button.onclick=function () {
 			let str=name+':'+$('#ms').val();	
 			$('#ms').val('');
-
 		/*	console.log(str);*/
 			socket.send(str);
 		};
