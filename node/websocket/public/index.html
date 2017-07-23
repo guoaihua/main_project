@@ -5,26 +5,25 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<title>网络聊天室</title>
 	<link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
-	<link rel="stylesheet" href="./stylesheets/index.css"> 
+	<link rel="stylesheet" href="./stylesheets/index.css?v=1.0"> 
 	<script src='./javascripts/jquery.min.js'></script>
 	<script src='./javascripts/bootstrap.min.js'></script>
 </head>
-<body>
+<body id="body">
 		<div class="container">
-			<div class="col-xs-10 col-xs-offset-1 col1">
+			<div class="col-xs-12  col1">
 				  <div class="panel panel-info col2">
 						<div class="panel-heading">
-								<h4>欢迎来到子明聊天室，在线人数(<span id="num">0</span>)</h4>
+								<h4>欢迎来到子明聊天室，当前在线人数(<span id="num">0</span>)</h4>
 						</div>			
 						<div class="panel-body" id="showMsg">
 
 						</div>
 				  </div>
 			</div>
-
-			<div class="col-xs-10 col-xs-offset-1 co1">
+			<div class="col-xs-12 co1">
 					<div class="col-xs-9 co2">
-						<textarea  id="ms"></textarea>
+					<input type="text" id="ms">
 					</div>
 					<div class="col-xs-3 co3">
 						<button id="sendBtn" class="btn btn-info btn-sm">发送</button>
@@ -48,22 +47,28 @@
 	<script src='javascripts/jquery.min.js'></script>
 	<script src='/socket.io/socket.io.js'></script>
 	<script>
-		var html='',
+	var html='',
 		name='',
-		count=0,
-	  	 socket=io.connect(),
+	  	socket=io.connect(),
 		button=document.getElementById('sendBtn'),
 		sendName=document.getElementById('sendName');
-
-		window.onbeforeunload=function () {
+/*		window.onbeforeunload=function () {
 			socket.end();
-		}
+		} */
+
+		//发送昵称，连接服务器
 		sendName.onclick=function(){
-			$('.model').hide();
-		  name=$('#name').val();
-		/*   console.log(name);*/
-		   socket.emit('login',name);
+			$('.model').hide();            //隐藏覆盖框
+		    name=$('#name').val();       
+		    socket.emit('login',name);   
 		};
+
+		// 已存在昵称处理
+		socket.on('existed',function(data){
+			$('.model').show('slow'); 
+			alert(data+'已被占用，请重新输入');  
+		});
+
 
 		//监听接受到的消息并输入到客户端窗口
 		socket.on("message",function (data) {
@@ -77,29 +82,33 @@
 			});
 			}else{
 				html+='<p>'+data+'</p>';
-
 			}
 			$('#showMsg').html(html);	
 			$('#showMsg').scrollTop($('#showMsg')[0].scrollHeight);
 		});
 
-		socket.on("disc",function (data) {
+
+		//接收loginsuccess
+		socket.on('loginsuceess',function(name,count){
+				html+='<p>'+'欢迎'+name+'大驾光临'+'</p>';
+				$('#showMsg').html(html);	
+				$('#showMsg').scrollTop($('#showMsg')[0].scrollHeight);
+				$('#num').text(count);
+		});
+
+		// 接受断开连接消息
+		socket.on("disc",function (data,count) {
 			html+='<p>'+data+'</p>';
 			$('#showMsg').html(html);	
 			$('#showMsg').scrollTop($('#showMsg')[0].scrollHeight);
-		});
-
-		socket.on("count",function (data) {
-			console.log(data);
-			$('#num').text(data);
+			$('#num').text(count);
 		});
 
 		// 点击发送一个消息
 		button.onclick=function () {
-			let str=name+':'+$('#ms').val();	
-			$('#ms').val('');
-		/*	console.log(str);*/
-			socket.send(str);
+		let str=name+':'+$('#ms').val();	
+				$('#ms').val('');
+				socket.send(str);
 		};
 	</script>
 </body>

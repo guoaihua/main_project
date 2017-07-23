@@ -11,30 +11,37 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var db=mongoose1();
-var count=0;
+var users=[];
 // 获取发布的model'data'
 var DataModel=mongoose.model('data');
 // 静态资源分配
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/users', users);
 
-// 全局socket对象 监听connet事件
+
+
+// 全局socket对象 监听connet事件 捕获新接入的socket对象
 	io.on('connect',function(socket){	
 			
 			// 监听客户端连接
 			socket.on('login',function (name) {
-				count=count+1;
-				io.send('客户端接入，欢迎：'+name);
-				socket.username=name;
-				var query=DataModel.find({});
-				query.sort({'time':-1}).limit(5);
-				query.exec(function(err,doc){
-/*						console.log(doc);
-						console.log(doc[0]);*/
-						socket.emit('message',doc);
-						});
-			io.sockets.emit('count',count);
+				
+				/*先将用户加入数组，保存，然后默认输出5条消息记录*/
+				/*判断昵称是否存在于数组中,未查询到返回-1*/
+				if(users.indexOf(name)>-1){
+					socket.emit('existed',name);
+				}else{
+						users.push(name);
+						socket.username=name;
+						socket.index=users.length-1;
+						var query=DataModel.find({});
+						query.sort({'time':-1}).limit(5);
+						query.exec(function(err,doc){
+								socket.emit('message',doc);
+								});
+						io.sockets.emit('loginsuceess',name,users.length);
 
+					/*	io.sockets.emit('count',count);*/
+				}
 			});		
 
 			//将用户信息存入数据库
@@ -69,18 +76,11 @@ app.use('/users', users);
 
  		   socket.on('disconnect', function () { 
       		  console.log('socket disconnect');
-      		  count--;
-      		  io.sockets.emit('disc',socket.username+'已断开连接');
-      		  io.sockets.emit('count',count);
+      		  users.splice(socket.index,1); 
+      		  io.sockets.emit('disc',socket.username+'已断开连接',users.length);
    		 });
 
 	});
-
-
-
-
-
-
 
 
 server.listen(8088);
