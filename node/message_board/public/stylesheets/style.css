@@ -1,0 +1,59 @@
+html,body{
+  width: 100%;
+  height:100%;
+}
+
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #57596f;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.wrap {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.show {
+  width: 25%;
+  height:40%;
+  position: absolute;
+}
+
+.one {
+  background-color: #f3e747;
+  top:16%;
+  left: 5%;
+  box-shadow: 4px 5px 10px 1px #3f4969;
+}
+.two {
+  background-color: #84e64b;
+  top:40%;
+  left: 14%;
+}
+.three {
+  background-color: #7fb3e6;
+  top:32.5%;
+  left: 27%;
+}
+.four {
+  background-color: #cc47ea;
+  top:9%;
+  left: 38%;
+}
+.five {
+  background-color: #ec8a4c;
+  top:29%;
+  left: 48%;
+}
+.six {
+  background-color: #f5b42e;
+  top:15%;
+  left: 64%;
+}
