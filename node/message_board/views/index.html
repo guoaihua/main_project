@@ -3,16 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../public/stylesheets/style.css">
+    
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/jquery.min.js"></script>
 </head>
 <body>
     <div class="wrap">
-        <div class="show one">one</div>
-        <div class="show two">two</div>
-        <div class="show three">three</div>
-        <div class="show four">four</div>
-        <div class="show five">five</div>
-        <div class="show six">six</div>
+        <div class="show one clear">
+          <h3>nide</h3>
+          <p>nihao</p>
+        </div>
+        <div class="show two clear">          <h3>nide</h3>
+          <p>nihao</p></div>
+        <div class="show three clear">          <h3>nide</h3>
+          <p>nihao</p></div>
+        <div class="show four clear">          <h3>nide</h3>
+          <p>nihao</p></div>
+        <div class="show five clear">          <h3>nide</h3>
+          <p>nihao</p></div>
+        <div class="show six clear">          <h3>nide</h3>
+          <p>nihao</p></div>
+        <!--控制条-->
+        <div class="control">
+            <button class="btn btn-info pull-left" id="pre">上一页</button>
+            <button class="btn btn-info " id="add">编写留言</button>
+            <button class="btn btn-info " id="close">关闭留言</button>
+            <button class="btn btn-info pull-right" id="next">下一页</button>
+            <button class="btn btn-info pull-right" id="nowCount">当前页面</button>
+            <button class="btn btn-info " id="Count">总的页面数</button>
+            <button class="btn btn-info  pull-right" id="Counts">总的留言数</button>
+          
+        </div>
+
+        <!--覆盖框-->
+        <div class="model">
+            <div class="show add">
+                 <div class="title">
+                        <h3>Contact Form</h3>
+                        <p>Please fill all the texts in the fields</p>
+                 </div>
+                 <span>
+                    <h4 class="name"> Your Name：</h4>
+                    <input type="text"  id="username">     
+                 </span>
+
+                 <span class="span2">
+                     <h4 class="name me">&nbsp;&nbsp;&nbsp;&nbsp;Message: </h4>   
+                      <textarea  id="content" cols="30" rows="10"></textarea>
+                 </span>
+                 <button class="btn btn-info" id="sendBtn">send</button>
+            </div>    
+        </div>
+
     </div>
+
+    <script>
+
+            var nowPage={
+               nowPage:2
+               },
+                counts=0,
+                count;
+
+            // 打开关闭留言添加
+            $('#add').click(function(){
+                  $('.model').show();
+            });
+
+            $('#close').click(function () {
+                   $('.model').hide();
+            });
+
+            // 页面初始化 获取数据库信息
+            // 
+            
+            function getdata(){
+                 $.ajax({
+                      type:'POST',
+                      url:'http://localhost:3000/find',
+                      data:nowPage,
+                      success:function (data) {
+                    /*    console.log(data);*/
+                        showData(data.rows);
+                        // 获取页面总数并显示
+                        counts=data.total;
+                        count=Math.ceil(counts/6)
+                        $('#Count').text('页面总数:'+count);
+                        $('#Counts').text('页面留言数:'+counts);
+                      }
+                  });
+
+                  // 初始化
+                 $('#nowCount').text('当前页面数:'+nowPage.nowPage);
+            }
+
+            getdata();
+
+            //清除初始化
+            function clearData(){
+                $('.wrap .clear').html("<h2>Zming</h2><p>Don't give up easily. Your dream will come true if you insist on it.</p>");
+            }
+
+            //显示函数
+            function showData(data){
+                //遍历
+                clearData();
+                data.forEach(function (item,index) {
+                    $('.wrap div').eq(index).html('<h2>'+item.name+'</h2><p>&nbsp;&nbsp;'+item.content+'</p><p>'+item.time+'</p>');
+                    console.log($('.wrap div').eq(index));
+                });
+            }
+
+
+
+
+            //监听按钮点击事件
+            $('#sendBtn').click(function () {
+            // 获取参数
+                var data={
+                   name:$('#username').val(),
+                   content:$('#content').val(),
+                   time:new Date(),
+                   nowPage:nowPage
+                }
+            // 异步上传
+              console.log(data);
+                $.ajax({
+                  type:'POST',
+                  url:'http://localhost:3000/save',
+                  data:data,
+                  success:function (data) {
+                      alert(data);
+                      // 执行获取函数
+                      getdata();
+                  }
+                });
+
+
+            });
+
+            //监听上一页 下一页
+            $('#pre').click(function () {
+                  nowPage.nowPage=(nowPage.nowPage-1)>1?(nowPage.nowPage-1):1;
+                  getdata();
+            });
+            $('#next').click(function () {
+                  nowPage.nowPage=(nowPage.nowPage+1)>count?count:(nowPage.nowPage+1);
+                  getdata();
+            });
+    </script>
+
 </body>
 </html>
