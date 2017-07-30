@@ -15,7 +15,10 @@
           <span class="pic">图片待添加</span>
           <span class="name">{{name}}</span>
           <span class="author">{{author}}</span>
+          <span class="icon"> bofang</span>
       </div>
+
+      <audio :src="src" autoplay="autoplay"></audio>
   </div>
 </template>
 
@@ -26,16 +29,20 @@ export default {
         return {
             pic:'niaho',
             name:'hha1',
-            author:'da'
+            author:'da',
+            src:''
         }
       },
       created:function () {
-         this.$root.Bus.$on('showing',function (data) {
-          
+         this.$root.Bus.$on('showing', (data)=>{
+               console.log(this);
               this.name=data.name;
               this.author=data.author;
-                console.log(this.name+this.author);
-          })
+              this.src=data.src;
+              console.log(this.name+this.author);
+         }
+
+          )
       }
 
 }
@@ -119,6 +126,7 @@ body,html {
       display: inline-block;
       font-size: 2rem;
       line-height: 140px;
+      text-align: center;
     }  
 
     .footer .pic {
@@ -132,7 +140,7 @@ body,html {
     }
     
     .footer .author {
-      width: 30%;
+      width: 20%;
       height: 100%;
     }
 

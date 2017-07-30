@@ -12,7 +12,7 @@
 <script>
 
     	var a=[
-  				{num:1,name:'济南济南',author:'陈小熊'},
+  				{num:1,name:'济南济南',author:'陈小熊',src:'http://www.guoaihua.com/music/001.mp3'},
   				{num:2,name:'故乡的原风景',author:'笛子'},
   				{num:3,name:'kiss the rain',author:'刚琴'},
   				{num:4,name:'济南济南',author:'陈小熊'},
