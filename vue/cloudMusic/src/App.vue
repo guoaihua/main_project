@@ -11,14 +11,27 @@
       <div class="content">
         <router-view></router-view>
       </div>
-      <div class="footer">
+      <div class="footer" v-on:click="show">
           <span class="pic">图片待添加</span>
           <span class="name">{{name}}</span>
           <span class="author">{{author}}</span>
-          <span class="icon"> bofang</span>
+          <span class="icon" v-text="showText" v-on:click.stop="toggle()"></span>
       </div>
 
-      <audio :src="src" autoplay="autoplay"></audio>
+
+      <!-- 尾部子页面 -->
+      <div class="music" v-show="musicShow">
+          <div class="musci-header">
+            <span class="back" v-on:click="hidden"><-</span>
+            <span>{{name}}</span>
+            <span>{{author}}</span>
+          </div>
+          <div class="music-content"></div>
+          <div class="music-footer">
+                  <!-- 播放器控件 -->
+            <audio :src="src" autoplay="autoplay" id="audio" controls="controls"></audio>
+          </div>
+      </div>
   </div>
 </template>
 
@@ -30,19 +43,41 @@ export default {
             pic:'niaho',
             name:'hha1',
             author:'da',
-            src:''
+            src:'',
+            cshow:true,
+            showText:'暂停',
+            musicShow:false
         }
       },
       created:function () {
          this.$root.Bus.$on('showing', (data)=>{
-               console.log(this);
+           /*    console.log(this);*/
               this.name=data.name;
               this.author=data.author;
               this.src=data.src;
-              console.log(this.name+this.author);
+           /*   console.log(this.name+this.author);*/
          }
 
           )
+      },
+      methods:{
+        show:function () {
+            this.musicShow=true;
+        },
+        hidden:function () {
+            this.musicShow=false;
+        },
+        toggle:function () {
+          let audio=document.getElementById('audio');
+          this.cshow=!this.cshow;
+          if(this.cshow===true){
+              this.showText="停止";
+              audio.play();
+          }else{
+             this.showText="播放";
+             audio.pause();
+          }
+        }
       }
 
 }
@@ -112,6 +147,52 @@ body,html {
 
 
   /* 尾部样式开始 */
+    .music {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgb(53, 80, 109);
+      font-size: 20px;
+    }
+
+   /*  尾部子页头部 */
+    .musci-header {
+      width: 100%;
+      height: 7%;  
+      border-bottom: 1px solid black;   
+    }
+    .musci-header span {
+      height: 100%;
+      display: inline-block;
+      font-size: 2.5rem;
+      line-height: 122px;
+      text-align: center;
+    }
+
+    .music-content {
+      width: 100%;
+      height: 80%;
+    }
+
+     .music-footer  {
+      width: 100%;
+      height: 13%;
+      background-color: lightgreen;
+     }
+
+
+
+    .music-footer audio{
+      width: 80%;
+      height: 80%;
+      display: block;
+    }
+/* 尾部子页部分结束 */
+
+
+
     .footer {
       width: 100%;
       height: 8%;
@@ -126,22 +207,29 @@ body,html {
       display: inline-block;
       font-size: 2rem;
       line-height: 140px;
-      text-align: center;
+
     }  
 
     .footer .pic {
       width: 30%;
       height: 100%;
+      text-align: center;
     }
 
     .footer .name {
-      width: 30%;
+      
       height: 100%;
     }
     
     .footer .author {
+      margin-left:10px; 
       width: 20%;
       height: 100%;
+    }
+
+    .icon {
+      float: right;
+      margin-right: 100px;
     }
 
  /* 尾部样式结束 */
