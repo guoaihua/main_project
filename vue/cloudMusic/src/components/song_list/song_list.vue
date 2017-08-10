@@ -4,42 +4,41 @@
      			<span class="num">{{item.num}}</span>
      			<span class="name">{{item.name}}</span>
      			<span class="author">{{item.author}}</span>
-     			<span class="more">┆</span>
+     			<span class="more"  v-on:click.stop="addMusic(index)">+</span>
      		</p>
    </div>   
 </template>
 
 <script>
 
-    	var a=[
-  				{num:1,name:'济南济南',author:'陈小熊',src:'http://www.guoaihua.com/music/001.mp3'},
-  				{num:2,name:'故乡的原风景',author:'笛子'},
-  				{num:3,name:'kiss the rain',author:'刚琴'},
-  				{num:4,name:'济南济南',author:'陈小熊'},
-  				{num:5,name:'济南济南',author:'陈小熊'},
-  				{num:6,name:'济南济南',author:'陈小熊'},
-  				{num:4,name:'济南济南',author:'陈小熊'},
-  				{num:5,name:'济南济南',author:'陈小熊'},
-  				{num:6,name:'济南济南',author:'陈小熊'},
-  				{num:4,name:'济南济南',author:'陈小熊'},
-  				{num:5,name:'济南济南',author:'陈小熊'},
-  				{num:6,name:'济南济南',author:'陈小熊'},
-  			]
+
   export default {
 
   			data(){
   				return {
-  					items:a,
+  					items:[],
   					b:{}
   				}
   			},
   			methods:{
+ 	
   				sendMsg:function (index) {
   					/*console.log(a[index]);*/
-  					this.b=a[index];
+  					this.b=this.items[index];
   					this.$root.Bus.$emit('showing',this.b);
+  				},
+  				addMusic:function (index) {
+  					this.$store.dispatch('addmusic',this.items[index]);
   				}
-  			}
+  			},
+        created:
+           function (){
+           this.$axios.post('http://www.guoaihua.com:3000/getData').then((res)=>{
+            /*console.log(res);*/
+               this.items=res.data;
+       /*        console.log(this.items);*/
+              });
+        }
   }
 </script>
 
@@ -56,10 +55,9 @@
 	}
 
 	p span {
-		font-size: 2.5rem;
 		display: inline-block;
 		color: white;
-		line-height: 125px;
+		line-height: 49px;
 	}
 
 	.num {
@@ -72,12 +70,12 @@
 	.name {
 		width: 35%;
 		height: 100%;
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid rgba(220, 189, 189, 0.33);
 	}
 	.author {
 		color: #ccc;
 		width: 37%;
 		height: 100%;
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid rgba(220, 189, 189, 0.33);
 	}
 </style>
