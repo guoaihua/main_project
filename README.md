@@ -6,7 +6,7 @@
 5.message——board  mongodb分页管理<br>
 6.api  express框架api<br>
 7.O2Oweb  电商平台的模仿<br>
-8.personalHomePage 纪念萌新第一个的网站 <br>
+8.personalHomePage 纪念萌新de第一个网站 <br>
 9.waterfall 原生js开发的瀑布流<br>
 
 
