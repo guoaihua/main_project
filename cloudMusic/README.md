@@ -1,7 +1,12 @@
 # 基于vue的仿网易云音乐开发
 
-> A Vue.js project
-
+---
+## 技术栈 
+* vue
+* vuex
+* vue-router
+* axios
+* express
 ## Build Setup
 
 ``` bash
