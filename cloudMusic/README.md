@@ -1,6 +1,5 @@
 # 基于vue的仿网易云音乐开发
-
----
+>A vue project
 ## 技术栈 
 * vue
 * vuex
