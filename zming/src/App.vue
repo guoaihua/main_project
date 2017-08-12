@@ -3,15 +3,15 @@
     	<div class="container">
     		<div class="header">
     			<h1 class="logoname">Zming</h1>
-    			<ul>
-    				<li> <router-link to='/home'>HOME </router-link></li>
-    				<li><router-link to='/person'> ABOUT ME</router-link></li>
-    				<li> <router-link to='/project'>MYPEROJECT</router-link></li>
-    				<li><router-link to='/article'>ARTICLE</router-link></li>
+    			<ul>    				
     				<li><router-link to='/contact'>CONTACT</router-link></li>
+    				<li><router-link to='/article'>ARTICLE</router-link></li>
+    				<li><router-link to='/project'>MYPEROJECT</router-link></li>
+    				<li><router-link to='/person'> ABOUT ME</router-link></li>
+    				<li><router-link to='/home'>HOME </router-link></li>
     			</ul>
     		</div>
-    		<div class="content">
+    		<div class="content clear">
     			<router-view></router-view>
     		</div>
     		<div class="footer"></div>
@@ -30,7 +30,7 @@ export default {
 		margin: 0;
 		padding: 0;
 		font-size: 20px;
-		font-family: "宋体";
+		font-family: 'Open Sans', sans-serif;
 		width: 100%;
 		height: 100%;
 	}
@@ -39,6 +39,9 @@ export default {
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}
+	.clear {
+		clear: both;
+	}
 
 	/* 头部开始 */
 		.header {
@@ -46,19 +49,82 @@ export default {
 		}
 		.logoname {
 			display: inline-block;
-			font-size: 4rem
+			font-size: 3rem
 		}
 
 		.header ul {
 			display: inline-block;
 			list-style: none;
-			width: 70%;
+			padding-left: 0;
+			width: 60%;
+			float: right;
 		}
 
 		.header ul li {
 			float: right;
-			width: 17%;
-			padding-top:3rem; 
+			width: 20%;
+			padding-top:2.5rem; 
+			color: white;
+			text-align: center;
+		}
+
+		.header ul li a {
+			color: white;
+			font-size: 14px;
+			text-decoration: none;
+		}
+		.header ul li a:hover{
+			color: #23D6E7;
+		}
+
+		 /* 媒体查询，检测小屛 */
+		@media (max-width: 493px) {
+			.logoname {
+				width: 100%;
+				text-align: center;
+			}
+
+			.header ul {
+				width: 100%;
+			}
+
+			.header ul li {
+				padding-top: 0.5rem;
+			}
+		}
+
+
+
+	    /* 媒体查询，检测手机 */
+		@media (max-width: 384px){
+			.logoname {
+				width: 100%;
+				text-align: center;
+				font-size: 3rem;
+			}
+			.header ul {
+				width: 100%;
+				padding-left: 0;
+			}
+			.header ul li {
+				width: 100%;
+				padding-top:0rem;
+				text-align: center;
+				padding: 0.3rem;
+			}
+
+			.header ul li a {
+				color: white;
+			}
+
+			.header ul li a {
+				color: #fff;
+				text-decoration: none;
+			} 
+			.header ul li:hover {
+				background-color: #23D6E7;
+			}
+
 		}
 
 
