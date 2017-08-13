@@ -36,20 +36,29 @@
 	
 	.intro {
 		position: absolute;
-		top: 6%;
+		top: 16%;
 		left: -22%;
 		width: 60%;
-		background:#23D6E7;
+		background:rgb(33, 185, 236);
 		padding: 1.5rem;
+		border-radius: 5px;
 	}
+	
+	
+
 
 	.intro .line {
 		border:4px double white;
 		padding: 1.5rem;
 	}
-	@media (max-width: 1366px) {
+
+	.line h3 {
+		color: white;
+	}
+ 	@media (max-width: 1366px) {
 		.box {
 			width: 67%;
+			padding: 1rem 0 0;
 		}
 		.box img {
 			margin-left: 10rem;
@@ -62,7 +71,7 @@
 		}
 		
 		.intro {
-			top: 4%;
+			top: 9%;
 			width: 73%;
 			padding: 1rem;
 		}
@@ -70,7 +79,10 @@
 
 	@media (max-width: 991px) {
 		.intro {
-			top:-5%;
+			top:5%;
+		}
+		.box {
+			padding: 2rem 0 0;
 		}
 	}
 	@media (max-width: 667px) {
@@ -88,6 +100,7 @@
 	@media (max-width: 493px) {
 		.box {
 			width: 80%;
+			padding: 0;
 		}
 	}
 

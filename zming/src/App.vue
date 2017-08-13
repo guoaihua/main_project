@@ -23,6 +23,12 @@
 export default {
 
 }
+       $('#app').jstars({
+        image_path:'../static/imgs',
+        style: 'white',
+        frequency: 50
+    });
+
 </script>
 
 <style>
@@ -35,7 +41,7 @@ export default {
 		height: 100%;
 	}
 	body {
-		background-image: url('../static/imgs/1.jpg');
+		background-image: url('../static/imgs/bg.png');
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 	}
@@ -44,6 +50,7 @@ export default {
 	}
 
 	/* 头部开始 */
+
 		.header {
 			color: white;
 		}
@@ -77,11 +84,13 @@ export default {
 			color: #23D6E7;
 		}
 
+
 		 /* 媒体查询，检测小屛 */
 		@media (max-width: 493px) {
 			.logoname {
 				width: 100%;
 				text-align: center;
+				font-size: 2rem;
 			}
 
 			.header ul {
@@ -100,7 +109,7 @@ export default {
 			.logoname {
 				width: 100%;
 				text-align: center;
-				font-size: 3rem;
+				font-size: 2rem;;
 			}
 			.header ul {
 				width: 100%;
@@ -127,7 +136,9 @@ export default {
 
 		}
 
-
+		.router-link-active {
+			color: skyblue!important;
+		}
 
 	/* 头部结束 */
 	/* 内容部分开始 */
