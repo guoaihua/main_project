@@ -2,7 +2,7 @@
   <div id="app">
     	<div class="container">
     		<div class="header">
-    			<h1 class="logoname">Zming</h1>
+    			<h1 class="logoname">ZIming</h1>
     			<ul>    				
     				<li><router-link to='/contact'>CONTACT</router-link></li>
     				<li><router-link to='/article'>ARTICLE</router-link></li>
@@ -23,11 +23,6 @@
 export default {
 
 }
-       $('#app').jstars({
-        image_path:'../static/imgs',
-        style: 'white',
-        frequency: 50
-    });
 
 </script>
 

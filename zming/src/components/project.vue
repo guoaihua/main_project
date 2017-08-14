@@ -1,28 +1,21 @@
 <template>
 	<div class="project">
 		<h1>about me</h1>
-		<div class="col-md-6">
-			Sed ac libero mattis, accumsan lacus nec, eleifend tortor. Etiam sodales consequat cursus. Quisque venenatis mi at nulla pulvinar lobortis. Mauris vulputate odio sed dolor suscipit, a sollicitudin sapien auctor. Nam aliquam tellus nibh, molestie dictum ipsum lobortis in.
-		</div>
-		<div class="col-md-6">
-			Nam vestibulum odio eu erat pulvinar pulvinar. Aliquam enim odio, scelerisque quis lacus.
-		</div>
+
+	<div class="boxsOne box">
+		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"></div>
+		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"></div>
+		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"></div>
 		<div class="clear"></div>
-		<div class="skills">
-			<div class="col-md-6">
-				<div class="aa">121</div>
-				<div class="aa">23</div>
-				<div class="aa">23</div>
-				<div class="aa">32</div>
-			</div>
-			<div class="col-md-6">
-				<div class="aa">32</div>
-				<div class="aa">32</div>
-				<div class="aa">32</div>
-				<div class="aa">32</div>
-			</div>
-		</div>
+	</div>
+
+	<div class="boxsTwo box">
+		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"></div>
+		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"></div>
+		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"></div>
 		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>		
 	</div>
 </template>
 
@@ -33,7 +26,7 @@
 <style scoped>
 		.project {
 			width: 75%;
-			padding: 2rem 0 0;
+			padding: 1rem 0 0;
 			text-align: center;
 			color: black;
 			margin:0 auto;
@@ -41,5 +34,9 @@
 		}
 		.clear {
 			clear: both;
+		}
+
+		.box {
+			margin-bottom: 1rem;
 		}
 </style>
