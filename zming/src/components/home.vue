@@ -39,7 +39,7 @@
 		top: 16%;
 		left: -22%;
 		width: 60%;
-		background:rgb(33, 185, 236);
+		background:rgba(33, 185, 236, 0);
 		padding: 1.5rem;
 		border-radius: 5px;
 	}
