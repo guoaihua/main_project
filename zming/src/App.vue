@@ -34,7 +34,7 @@ export default {
 		font-family: 'Open Sans', sans-serif;
 		width: 100%;
 		height: 100%;
-	/* 	overflow: hidden; */
+		overflow: hidden; 
 	}
 	body {
 		background-image: url('../static/imgs/bg.png');

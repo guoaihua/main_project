@@ -11,6 +11,7 @@
 			<div class="intro">
 				<div class="line">
 					<h3>你好！ 我叫郭爱华</h3>
+
 					<div class="rw-words">
 						<span>励志成为webfull-stack</span>
 						<span>励志成为webfull-stack</span>
@@ -19,7 +20,7 @@
 						<span>励志成为webfull-stack</span>
 						<span>励志成为webfull-stack</span>
 					</div>					
-					<hr>
+					<hr class="split-line">
 					<ul>
 						<li>
 							<ul  class="line-inblock">							
@@ -58,17 +59,128 @@
 
 <style scoped>
 
+	/* 线框流动开始 */
+	.line {
+		position: relative;
+	}
+	
+	.line:hover::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	border: 2px solid skyblue;
+/* 	background: lightgreen; */
+	animation: lineOne 8s linear infinite; 
+	animation-delay:-4s; 
+	z-index: 99;
+}
+
+@keyframes lineOne {
+	0%,100%{clip:rect(0,400px,2px,0)}
+    	25%{clip:rect(0,2px,300px,0)}
+    	50%{clip:rect(298px,400px,300px,2px)}
+    	75%{clip:rect(0,400px,300px,396px)}
+}  
+ 
+ .line:hover::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	border: 2px solid skyblue;
+		animation-delay: 4s; 
+	 animation: lineTwo 8s linear infinite; 
+	 z-index: 99;
+}
+
+@keyframes lineTwo{
+	0%,100%{clip:rect(0,400px,2px,0)}
+    	25%{clip:rect(0,2px,300px,0)}
+    	50%{clip:rect(298px,400px,300px,2px)}
+    	75%{clip:rect(0,400px,300px,396px)}
+}  
+
+
+
+	/* 线框流动结束 */
 
 	/* 特效文字掉落 */
 
+	.split-line {
+		margin-top: 15%;
+	}
+
 	.rw-words {
-		overflow: hidden;
+		text-indent: 10px;
+	/* 	overflow: hidden; */
+		position: relative;
 	}
 	.rw-words span {
 		display: inline;
 		white-space: nowrap;
+		position: absolute;
+		color: white;
+		opacity: 0;
+		overflow: hidden;
+		color: #888;
+		-webkit-transform-origin: 10% 75%;
+		transform-origin: 10% 75%;
+		-webkit-animation: rotateWord 18s linear infinite 0s;
+		-ms-animation: rotateWord 18s linear infinite 0s;
+		animation: rotateWord 18s linear infinite 0s;
 	}
 
+.rw-words span:nth-child(2) { 
+    -webkit-animation-delay: 3s; 
+	-ms-animation-delay: 3s; 
+	animation-delay: 3s; 
+	color: #6b889d;
+}
+.rw-words span:nth-child(3) { 
+    -webkit-animation-delay: 6s; 
+	-ms-animation-delay: 6s; 
+	animation-delay: 6s; 
+	color: #6b739d;	
+}
+.rw-words span:nth-child(4) { 
+    -webkit-animation-delay: 9s; 
+	-ms-animation-delay: 9s; 
+	animation-delay: 9s; 
+	color: #7a6b9d;
+}
+.rw-words span:nth-child(5) { 
+    -webkit-animation-delay: 12s; 
+	-ms-animation-delay: 12s; 
+	animation-delay: 12s; 
+	color: #8d6b9d;
+}
+.rw-words span:nth-child(6) { 
+    -webkit-animation-delay: 15s; 
+	-ms-animation-delay: 15s; 
+	animation-delay: 15s; 
+	color: #9b6b9d;
+}
+
+
+
+@keyframes rotateWord {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    17% { opacity: 1; -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+	19% { opacity: 1; -webkit-transform: rotate(98deg); transform: rotate(98deg); }
+	21% { opacity: 1; -webkit-transform: rotate(86deg); transform: rotate(86deg); }
+	23% { opacity: 1; -webkit-transform: translateY(85px) rotate(83deg); transform: translateY(85px) rotate(83deg); }
+	25% { opacity: 0; -webkit-transform: translateY(170px) rotate(80deg); transform: translateY(170px) rotate(80deg); }
+	80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* 特效文字掉落结束 */
 
 	.home {
 		width: 100%;
@@ -101,9 +213,10 @@
 	
 
 	.intro .line {
-		border:4px double white; 
+	/* 	border:4px double white;  */
 		padding: 1.5rem;
 		font-family: "宋体";
+	/* 	background: red; */
 	}
 
 	.line h3 {
@@ -155,6 +268,20 @@
 			padding: 1rem;
 		}
 
+/* 
+	@keyframes lineOne {
+	0%,100%{clip:rect(0,400px,2px,0)}
+    	25%{clip:rect(0,2px,302px,0)}
+    	50%{clip:rect(300px,419px,302px,0px)}
+    	75%{clip:rect(0,419px,302px,417px)}
+	}  
+
+	@keyframes lineTwo{
+	0%,100%{clip:rect(0,400px,2px,0)}
+    	25%{clip:rect(0,2px,302px,0)}
+    	50%{clip:rect(300px,419px,302px,0px)}
+    	75%{clip:rect(0,419px,302px,416px)}
+	}  */
 
 	}
 
