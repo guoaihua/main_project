@@ -4,17 +4,20 @@
     		<div class="header">
     			<h1 class="logoname">ZIming</h1>
     			<ul>    				
-    				<li><router-link to='/contact'>CONTACT</router-link></li>
-    				<li><router-link to='/article'>ARTICLE</router-link></li>
-    				<li><router-link to='/project'>MYPEROJECT</router-link></li>
-    				<li><router-link to='/person'> ABOUT ME</router-link></li>
-    				<li><router-link to='/home'>HOME </router-link></li>
+    				<li><router-link to='/contact'>联系我</router-link></li>
+    				<li><router-link to='/article'>个人介绍</router-link></li>
+    				<li><router-link to='/project'>项目展示</router-link></li>
+    				<li><router-link to='/person'>视觉欣赏</router-link></li>
+    				<li><router-link to='/home'>主页</router-link></li>
     			</ul>
     		</div>
     		<div class="content clear">
     			<router-view></router-view>
     		</div>
     		<div class="footer"></div>
+    		<span class="music-fly" @click="stop"> 
+				<img src="/static/imgs/music-fly.png" alt="" class="img-responsive">
+    		</span>
     	</div>
   </div>
 </template>
@@ -22,6 +25,68 @@
 <script>
 export default {
 
+		data(){
+			return {
+				move:true,
+				timer:null,
+				timers:{
+					dirX:1,
+					dirY:1,
+					posX:0,
+					posY:0
+				}
+				}
+			},
+		created:function () {		
+			console.log(this.timers);
+			console.log(this.timers.dirX);
+		if(this.move===true){
+				var	_this=this;
+				 this.timer=setInterval(function () {
+				_this.timers.posX+=(2*_this.timers.dirX);
+				_this.timers.posY+=(2*_this.timers.dirY);
+				$(".music-fly").css({
+					top:_this.timers.posY,
+					left:_this.timers.posX
+				});
+				/*	碰撞检测*/
+			if(_this.timers.posX < 1 || _this.timers.posX> document.body.clientWidth)
+		            {_this.timers.dirX =- _this.timers.dirX};
+		       if(_this.timers.posY < 1 || _this.timers.posY> document.body.clientHeight)
+		            {_this.timers.dirY =- _this.timers.dirY};
+					},30);
+					
+			}
+}
+	,
+	methods:{
+
+		stop:function () {
+		this.move=!this.move;
+		console.log(document.body.clientWidth+":"+document.body.clientHeight);
+		if(this.move===false){
+			clearInterval(this.timer);
+		}else{
+				var	_this=this;
+				 this.timer=setInterval(function () {
+				_this.timers.posX+=(2*_this.timers.dirX);
+				_this.timers.posY+=(2*_this.timers.dirY);
+				$(".music-fly").css({
+					top:_this.timers.posY,
+					left:_this.timers.posX
+				});
+				/*	碰撞检测*/
+			if(_this.timers.posX < 1 || _this.timers.posX+300> document.body.clientWidth)
+		            {_this.timers.dirX =- _this.timers.dirX};
+		   if(_this.timers.posY < 1 || _this.timers.posY+300> document.body.clientHeight)
+		            {_this.timers.dirY =- _this.timers.dirY};
+					},30);
+
+		}
+
+		}
+
+	}
 }
 
 </script>
@@ -43,6 +108,16 @@ export default {
 	}
 	.clear {
 		clear: both;
+	}
+
+	/* 音乐控件 */
+		.music-fly {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.music-fly:hover {
+		cursor: pointer;
 	}
 
 	/* 头部开始 */

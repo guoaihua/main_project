@@ -1,29 +1,30 @@
 <template>
 	<div class="project">
 		<h1 class="text3d">我的项目</h1>
+		<h4 class="address"><a href="https://github.com/guoaihua/main_project" title="https://github.com/guoaihua/main_project">以下项目均在github上发布，打滚求star</a></h4>
 
 	<div class="boxsOne box" @click='showslider'>
-		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"><div class="mask">
-			<p>ZIming</p>
+		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+			<p>实验室元器件管理</p>
 		</div></div>
-		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"><div class="mask">
-			<p>ZIming</p>
+		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+			<p>留言板</p>
 		</div></div>
-		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"><div class="mask">
-			<p>ZIming</p>
+		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+			<p>O2O自助平台</p>
 		</div></div>
 		<div class="clear"></div>
 	</div>
 
 	<div class="boxsTwo box" @click='showslider'>
-		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"><div class="mask">
-			<p>ZIming</p>
+		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+			<p>网络聊天室</p>
 		</div></div>
-		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"><div class="mask">
-			<p>ZIming</p>
+		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+			<p>网络爬虫</p>
 		</div></div>
-		<div class="col-md-4"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"><div class="mask">
-			<p>ZIming</p>
+		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+			<p>仿网易云音乐</p>
 		</div></div>
 		<div class="clear"></div>
 	</div>
@@ -31,12 +32,12 @@
 
 	<div class="swipebox-container" v-show="boxshow">
 		<div class="swipebox-slider">
-			<div class="slider current"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"></div>
-			<div class="slider"><img src="/static/imgs/6.jpg" alt="" class="img-responsive"></div>
-			<div class="slider"><img src="/static/imgs/5.jpg" alt="" class="img-responsive"></div>
-			<div class="slider"><img src="/static/imgs/7.jpg" alt="" class="img-responsive"></div>
-			<div class="slider"><img src="/static/imgs/boxs.jpg" alt="" class="img-responsive"></div>
-			<div class="slider"><img src="/static/imgs/7.jpg" alt="" class="img-responsive"></div>
+			<div class="slider current"><img src="/static/imgs/propic1.png" alt="" class="img-responsive"></div>
+			<div class="slider"><img src="/static/imgs/propic2.png" alt="" class="img-responsive"></div>
+			<div class="slider"><img src="/static/imgs/propic3.png" alt="" class="img-responsive"></div>
+			<div class="slider"><img src="/static/imgs/propic4.png" alt="" class="img-responsive"></div>
+			<div class="slider"><img src="/static/imgs/propic5.png" alt="" class="img-responsive"></div>
+			<div class="slider"><img src="/static/imgs/propic6.png" alt="" class="img-responsive"></div>
 		</div>
 		<div class="arrows">
 			<span class="arrows-left" @click="prev"></span>
@@ -94,6 +95,15 @@
 </script>
 
 <style scoped>
+
+	.address a {
+		text-decoration: none;
+		color: #ccc;
+	}	
+
+	.address a:hover {
+		color: skyblue;
+	} 
 	.text3d {
 			color:#3d3d3d;
 			font-weight: bold;
@@ -130,12 +140,13 @@
 			transition: all 0.4s ease-in-out;
 			text-align: center;
 			opacity: 0;
-			padding: 0 15px;
+			padding: 0 15px; 
 			box-sizing: border-box;
 		}
 
 		.mask:hover {
 			opacity: 1;
+			padding: 0!important;
 			border:50px solid rgba(35, 214, 231, 0.64);
    		    background: rgba(0, 0, 0, 0.45);
 		}
@@ -144,7 +155,7 @@
 		 text-transform: capitalize;
 		 padding: 1rem 0 0;
 		 display: inline-block;
-		  font-size:1em;
+		 font-size:1em;
   		  color: #fff;
 		}
 

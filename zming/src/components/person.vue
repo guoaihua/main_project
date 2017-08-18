@@ -15,6 +15,7 @@
 				<div class="bottom-in in"></div>
 				<div class="left-in in"></div>
 				<div class="right-in in"></div>
+				<div class="clear"></div>
 			</div>
 		</div>
 
@@ -22,6 +23,10 @@
 		<span class="winnower-container">	
 				<img src="/static/imgs/winnower.png" alt="" class="img-responsive winnower ">
 				<img src="/static/imgs/winnower-bottom.png" alt="" class="img-responsive winnower-bottom">
+		</span>
+
+		<span class="moon">
+			<img src="/static/imgs/moon.png" alt="" class="img-responsive">
 		</span>
 
 		<span class="stars">
@@ -108,8 +113,8 @@
 
 
 		.font-in,.back-in,.top-in,.bottom-in,.left-in,.right-in {
-			background: url('/static/imgs/cube.png');
-			background-image:50% 50% 
+			background: url('/static/imgs/39.png');
+			background-size: 100% 100%;
 		}
 		
 		.font-in {
@@ -171,6 +176,19 @@
 
 
 
+		/* 月亮 */
+
+		.moon {
+			position: absolute;
+			right: 0px;
+			top: -45px;
+			z-index: -999;
+		}
+
+		.moon:hover {
+			top: 0px;
+			cursor: pointer;
+		}
 
 
 		/* 旋转方块 */
@@ -196,6 +214,10 @@
 			bottom: 0;
 			z-index: -1;
 		}
+
+		
+		
+
 		.winnower{
 			animation: rotating 3s linear infinite;
 		}

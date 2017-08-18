@@ -13,12 +13,12 @@
 					<h3>你好！ 我叫郭爱华</h3>
 
 					<div class="rw-words">
-						<span>励志成为webfull-stack</span>
-						<span>励志成为webfull-stack</span>
-						<span>励志成为webfull-stack</span>
-						<span>励志成为webfull-stack</span>
-						<span>励志成为webfull-stack</span>
-						<span>励志成为webfull-stack</span>
+						<span>励志成为Full Stack Developer</span>
+						<span>喜欢酷炫的Web Skills</span>
+						<span>极其爱折腾，安静！</span>
+						<span>喜欢古风，爱笛箫</span>
+						<span>爱旅游，梦想走遍万水千山</span>
+						<span>志同道合的小伙伴快来认亲</span>
 					</div>					
 					<hr class="split-line">
 					<ul>
@@ -46,6 +46,12 @@
 								<li>武汉纺织大学</li>
 							</ul>
 						</li>
+						<li>
+							<ul class="line-inblock">
+								<li>github</li>
+								<li class="address"><a href="https://github.com/guoaihua/main_project" title="https://github.com/guoaihua/main_project">点击进入</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -59,6 +65,9 @@
 
 <style scoped>
 
+	.address a {
+		text-decoration: none;
+	}
 	/* 线框流动开始 */
 	.line {
 		position: relative;
