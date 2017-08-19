@@ -7,7 +7,7 @@
     				<li><router-link to='/contact'>联系我</router-link></li>
     				<li><router-link to='/article'>个人介绍</router-link></li>
     				<li><router-link to='/project'>项目展示</router-link></li>
-    				<li><router-link to='/person'>视觉欣赏</router-link></li>
+    				<li><router-link to='/person'>图片欣赏</router-link></li>
     				<li><router-link to='/home'>主页</router-link></li>
     			</ul>
     		</div>
@@ -17,6 +17,7 @@
     		<div class="footer"></div>
     		<span class="music-fly" @click="stop"> 
 				<img src="/static/imgs/music-fly.png" alt="" class="img-responsive">
+				<audio :src="src" autoplay="autoplay" id="audio"></audio>
     		</span>
     	</div>
   </div>
@@ -34,13 +35,44 @@ export default {
 					dirY:1,
 					posX:0,
 					posY:0
-				}
+				},
+				src:"http://www.guoaihua.com:3000/users/musics/007",
 				}
 			},
 		created:function () {		
-			console.log(this.timers);
-			console.log(this.timers.dirX);
+/*			console.log(this.timers);
+			console.log(this.timers.dirX);*/
 		if(this.move===true){
+				var	_this=this;
+				 this.timer=setInterval(function () {
+				_this.timers.posX+=(2*_this.timers.dirX);
+				_this.timers.posY+=(2*_this.timers.dirY);
+				$(".music-fly").css({
+					top:_this.timers.posY,
+					left:_this.timers.posX
+				});
+				/*	碰撞检测*/
+
+			if(_this.timers.posX < 1 || _this.timers.posX> document.body.clientWidth)
+		            {_this.timers.dirX =- _this.timers.dirX};
+
+		       if(_this.timers.posY < 1 || _this.timers.posY> document.body.clientHeight)
+		            {_this.timers.dirY =- _this.timers.dirY};
+					},30);			
+			}
+		}
+	,
+	methods:{
+
+		stop:function () {
+
+		let audio=document.getElementById("audio");
+		this.move=!this.move;
+		if(this.move===false){
+			clearInterval(this.timer);
+			audio.pause();
+		}else{
+				audio.play();
 				var	_this=this;
 				 this.timer=setInterval(function () {
 				_this.timers.posX+=(2*_this.timers.dirX);
@@ -52,33 +84,7 @@ export default {
 				/*	碰撞检测*/
 			if(_this.timers.posX < 1 || _this.timers.posX> document.body.clientWidth)
 		            {_this.timers.dirX =- _this.timers.dirX};
-		       if(_this.timers.posY < 1 || _this.timers.posY> document.body.clientHeight)
-		            {_this.timers.dirY =- _this.timers.dirY};
-					},30);
-					
-			}
-}
-	,
-	methods:{
-
-		stop:function () {
-		this.move=!this.move;
-		console.log(document.body.clientWidth+":"+document.body.clientHeight);
-		if(this.move===false){
-			clearInterval(this.timer);
-		}else{
-				var	_this=this;
-				 this.timer=setInterval(function () {
-				_this.timers.posX+=(2*_this.timers.dirX);
-				_this.timers.posY+=(2*_this.timers.dirY);
-				$(".music-fly").css({
-					top:_this.timers.posY,
-					left:_this.timers.posX
-				});
-				/*	碰撞检测*/
-			if(_this.timers.posX < 1 || _this.timers.posX+300> document.body.clientWidth)
-		            {_this.timers.dirX =- _this.timers.dirX};
-		   if(_this.timers.posY < 1 || _this.timers.posY+300> document.body.clientHeight)
+		   if(_this.timers.posY < 1 || _this.timers.posY> document.body.clientHeight)
 		            {_this.timers.dirY =- _this.timers.dirY};
 					},30);
 
@@ -96,7 +102,7 @@ export default {
 		margin: 0;
 		padding: 0;
 		font-size: 20px;
-		font-family: 'Open Sans', sans-serif;
+		font-family: 'Open Sans', sans-serif,"宋体";
 		width: 100%;
 		height: 100%;
 		overflow: hidden; 
@@ -126,9 +132,25 @@ export default {
 			color: white;
 		}
 		.logoname {
+			padding-bottom: 10px; 
 			display: inline-block;
-			font-size: 3rem
+			font-family: 'Open Sans', sans-serif,"宋体";
+			font-size: 3rem;
+			 text-align: center;
+	      -webkit-background-clip:text;
+	      -webkit-text-fill-color:transparent;
+	      background-size:200% 120%;
+	      background-image: -webkit-linear-gradient(left,#df21f5 , skyblue 25%, orange 50%, #000a80 75% , #df21f5);
+	      animation: content-animation 4s infinite linear;
 		}
+
+  @keyframes content-animation {
+      0%{background-position: 0,0}
+      100%{background-position: -100% 0;}
+  }
+
+
+
 
 		.header ul {
 			display: inline-block;

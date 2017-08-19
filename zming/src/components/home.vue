@@ -2,11 +2,11 @@
 	<div class="home ">
 		<div class="box clear">
 			<img src="/static/imgs/borders1.png" class='img-responsive'>
-			<marquee behavior="scroll" direction="up" class="scrollText">
-				<p>生命里，一些缱绻，无论素净，还是喧哗，都已经被岁月赋予了清喜的味道，一些闲词，或清新，或淡雅，总会在某一个回眸的时刻醉了流年，濡湿了柔软的心，冥冥之中，我们沿着呼唤的风声，终于在堆满落花的秋里，再次重逢，念在天涯，心在咫尺，我相信，一米阳光，才是我们最好的距离。   
-       缘起是诗，缘离是画，这些关于岁月，关于记忆的章节，终会被时光搁置在无法触及的红尘之外，曾经，你我一别经年，可风里，总有一段美丽会与我们不期而遇，一盏琉璃，半杯心悦，端然着那一份醉人的静，这安静行走的流年，总会被过往赋予一份清喜，一份浪漫。</p>
-       				<p>生命里，一些缱绻，无论素净，还是喧哗，都已经被岁月赋予了清喜的味道，一些闲词，或清新，或淡雅，总会在某一个回眸的时刻醉了流年，濡湿了柔软的心，冥冥之中，我们沿着呼唤的风声，终于在堆满落花的秋里，再次重逢，念在天涯，心在咫尺，我相信，一米阳光，才是我们最好的距离。   
-       缘起是诗，缘离是画，这些关于岁月，关于记忆的章节，终会被时光搁置在无法触及的红尘之外，曾经，你我一别经年，可风里，总有一段美丽会与我们不期而遇，一盏琉璃，半杯心悦，端然着那一份醉人的静，这安静行走的流年，总会被过往赋予一份清喜，一份浪漫。</p>
+			<marquee behavior="scroll" direction="up" class="scrollText" onMouseOut="this.start()" onMouseOver="this.stop()" scrollamount="3">
+				<p>亲爱的访客，您好！</p>
+				<p>此网站是萌新，利用假期搭建的基于vue框架的个人网站。由于技术方面和时间方面的原因，网站兼容性就暂时没精力去改善了，目前谷歌等主流浏览器是可以正常体验的，ie，手机端等是不存在的。哈哈，依据优雅降级原则，此网站的兼容性和其它功能会在日后的版本更新中体现。欢迎大神前来指教，也希望与志同道合的小伙伴们一起奋斗！</p>
+				<p>以下消息来自于，爬虫爬取的和大伙的留言信息</p>
+  
 			</marquee>
 			<div class="intro">
 				<div class="line">
@@ -81,20 +81,19 @@
 	bottom: 0;
 	right: 0;
 	border: 2px solid skyblue;
-/* 	background: lightgreen; */
-	animation: lineOne 8s linear infinite; 
+ 	animation: lineOne 8s linear infinite; 
 	animation-delay:-4s; 
 	z-index: 99;
-}
+	}
 
-@keyframes lineOne {
+ @keyframes lineOne {
 	0%,100%{clip:rect(0,400px,2px,0)}
-    	25%{clip:rect(0,2px,300px,0)}
-    	50%{clip:rect(298px,400px,300px,2px)}
-    	75%{clip:rect(0,400px,300px,396px)}
-}  
+    	25%{clip:rect(0,2px,329px,0)}
+    	50%{clip:rect(326px,400px,328px,2px)}
+    	75%{clip:rect(0,400px,328px,396px)}
+}   
  
- .line:hover::after {
+  .line:hover::after {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -102,17 +101,17 @@
 	bottom: 0;
 	right: 0;
 	border: 2px solid skyblue;
-		animation-delay: 4s; 
+	animation-delay: 4s; 
 	 animation: lineTwo 8s linear infinite; 
 	 z-index: 99;
 }
 
-@keyframes lineTwo{
+@keyframes lineTwo {
 	0%,100%{clip:rect(0,400px,2px,0)}
-    	25%{clip:rect(0,2px,300px,0)}
-    	50%{clip:rect(298px,400px,300px,2px)}
-    	75%{clip:rect(0,400px,300px,396px)}
-}  
+    	25%{clip:rect(0,2px,329px,0)}
+    	50%{clip:rect(326px,400px,328px,2px)}
+    	75%{clip:rect(0,400px,328px,396px)}
+}   
 
 
 
@@ -193,6 +192,7 @@
 
 	.home {
 		width: 100%;
+		font-family: 'Open Sans', sans-serif;
 	}
 
 	.box {
@@ -217,6 +217,7 @@
 		right: -13%;
 		top: 26%;
 		margin-left: 10rem;
+		color: rgba(240, 248, 253, 0.76);
 	}
 	
 	
@@ -276,21 +277,6 @@
 			width: 73%;
 			padding: 1rem;
 		}
-
-/* 
-	@keyframes lineOne {
-	0%,100%{clip:rect(0,400px,2px,0)}
-    	25%{clip:rect(0,2px,302px,0)}
-    	50%{clip:rect(300px,419px,302px,0px)}
-    	75%{clip:rect(0,419px,302px,417px)}
-	}  
-
-	@keyframes lineTwo{
-	0%,100%{clip:rect(0,400px,2px,0)}
-    	25%{clip:rect(0,2px,302px,0)}
-    	50%{clip:rect(300px,419px,302px,0px)}
-    	75%{clip:rect(0,419px,302px,416px)}
-	}  */
 
 	}
 

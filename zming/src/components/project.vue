@@ -4,26 +4,26 @@
 		<h4 class="address"><a href="https://github.com/guoaihua/main_project" title="https://github.com/guoaihua/main_project">以下项目均在github上发布，打滚求star</a></h4>
 
 	<div class="boxsOne box" @click='showslider'>
-		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+		<div class="col-md-4  shadow"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
 			<p>实验室元器件管理</p>
 		</div></div>
-		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+		<div class="col-md-4  shadow"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
 			<p>留言板</p>
 		</div></div>
-		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+		<div class="col-md-4 shadow"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
 			<p>O2O自助平台</p>
 		</div></div>
 		<div class="clear"></div>
 	</div>
 
 	<div class="boxsTwo box" @click='showslider'>
-		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+		<div class="col-md-4 shadow"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
 			<p>网络聊天室</p>
 		</div></div>
-		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+		<div class="col-md-4 shadow"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
 			<p>网络爬虫</p>
 		</div></div>
-		<div class="col-md-4"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
+		<div class="col-md-4 shadow"><img src="/static/imgs/project.jpg" alt="" class="img-responsive"><div class="mask">
 			<p>仿网易云音乐</p>
 		</div></div>
 		<div class="clear"></div>
@@ -56,8 +56,7 @@
 			return{
 				boxshow:false,
 				index:0
-			}
-			
+			}		
 		},
 		methods:{
 			showslider:function () {
@@ -131,9 +130,9 @@
 		}
 		.mask {
 			position: absolute;
-			left: 0;
+			left: 5%;
 			top: 0;
-			width: 100%;
+			width: 90%;
 			height: 100%;
 			border: 0px solid rgba(0,0,0,0.7);
 			overflow: visible;
@@ -234,5 +233,10 @@
 		background: url('/static/imgs/arrows.png') 15px 12px no-repeat;
 		z-index: 99;
 		cursor: pointer;
+	}
+
+
+	.shadow img {
+		box-shadow:1px -1px 10px #2bb7c5, -2px 1px 10px #2bb7c5;
 	}
 </style>
