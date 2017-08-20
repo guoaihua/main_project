@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "bootstrap": "^3.3.7",
-    "ejs": "^2.5.7"
+    "ejs": "^2.5.7",
+    "mongoose": "^4.11.7"
   }
 }

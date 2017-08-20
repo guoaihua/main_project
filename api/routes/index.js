@@ -27,4 +27,7 @@ var data=[
 router.post('/getData', function(req, res, next) {
   		res.send(data);
 });
+
+
+
 module.exports = router;
