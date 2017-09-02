@@ -1,5 +1,5 @@
 # 仓库项目简介
-1.cloudMusic 基于vue的简单仿网易云<br>
+1.zming个人站 基于vue的单页面应用<br>
 2.websocket  用nodejs开发的网络聊天室<br>
 3.spider    网络爬虫<br>
 4.CmsProject、booksystem  php后台的元件库管理系统<br>
@@ -8,5 +8,5 @@
 7.O2Oweb  电商平台的模仿<br>
 8.personalHomePage 纪念萌新de第一个网站 <br>
 9.waterfall 原生js开发的瀑布流<br>
-10.zming  个人站 基于vue的单页面应用
+10.cloudMusic 基于vue的简单仿网易云
 
