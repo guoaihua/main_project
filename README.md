@@ -11,6 +11,6 @@
 8.personalHomePage 纪念萌新de第一个网站 <br>
 9.waterfall 原生js开发的瀑布流<br>
 10.cloudMusic 基于vue的简单仿网易云
-
-重构开始：
+<br>
+#重构开始：
 1.vue全家桶重构第一个个人站。（2019-5-23）
