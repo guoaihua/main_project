@@ -14,3 +14,4 @@
 <br>
 # 重构开始：
 1.vue全家桶重构第一个个人站。（2019-5-23）
+新的仓库地址：https://github.com/guoaihua/ziming（仓库分开了）
