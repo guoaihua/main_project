@@ -17,7 +17,7 @@
   "devDependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
-    "mongoose": "^4.11.3",
+    "mongoose": "^5.7.7",
     "socket.io": "^2.0.3"
   }
 }
